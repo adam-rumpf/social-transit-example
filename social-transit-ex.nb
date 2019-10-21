@@ -10,17 +10,192 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[       765,         33]
-NotebookOptionsPosition[       561,         21]
-NotebookOutlinePosition[       905,         36]
-CellTagsIndexPosition[       862,         33]
+NotebookDataLength[     10067,        238]
+NotebookOptionsPosition[      8832,        196]
+NotebookOutlinePosition[      9175,        211]
+CellTagsIndexPosition[      9132,        208]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
+
+Cell[CellGroupData[{
+Cell["Procedure", "Subsection",
+ CellChangeTimes->{{3.7803292543397837`*^9, 3.780329256110973*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Define the road network.", "ItemNumbered",
+ CellChangeTimes->{{3.780329276188409*^9, 3.7803293011823826`*^9}, {
+  3.7803296031889906`*^9, 3.7803296394264975`*^9}, {3.780678753422472*^9, 
+  3.780678766351327*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+The network consists of a square grid of stops, with routes running N/S and \
+E/W to define the grid (plus a dummy turnaround loop on each end). We can \
+also choose to insert additional stops between the grid intersections.\
+\>", "SubitemNumbered",
+ CellChangeTimes->{{3.780329276188409*^9, 3.7803293011823826`*^9}, {
+  3.7803296031889906`*^9, 3.7803296394264975`*^9}, {3.780678753422472*^9, 
+  3.780678805404803*^9}, {3.7806789159593525`*^9, 3.7806789159643526`*^9}, {
+  3.780681600251603*^9, 3.7806816134123807`*^9}, {3.780682029623898*^9, 
+  3.780682038601019*^9}}],
+
+Cell["Each stop is a node, whose coordinates we store.", "SubitemNumbered",
+ CellChangeTimes->{{3.780329276188409*^9, 3.7803293011823826`*^9}, {
+  3.7803296031889906`*^9, 3.7803296394264975`*^9}, {3.780678753422472*^9, 
+  3.780678805404803*^9}, {3.7806789159593525`*^9, 3.780678938594097*^9}}],
+
+Cell["\<\
+We define arcs for each line, with slightly randomized travel times that \
+depend on distance plus a constant boarding time.\
+\>", "SubitemNumbered",
+ CellChangeTimes->{{3.780329276188409*^9, 3.7803293011823826`*^9}, {
+  3.7803296031889906`*^9, 3.7803296394264975`*^9}, {3.780678753422472*^9, 
+  3.780678805404803*^9}, {3.7806789159593525`*^9, 3.780678946325615*^9}, {
+  3.780681957166153*^9, 3.780681990746385*^9}}],
+
+Cell["\<\
+Each stop is within walking distance of the four stops immediately adjacent, \
+with walking times based on taxicab distance.\
+\>", "SubitemNumbered",
+ CellChangeTimes->{{3.780329276188409*^9, 3.7803293011823826`*^9}, {
+  3.7803296031889906`*^9, 3.7803296394264975`*^9}, {3.780678753422472*^9, 
+  3.7806788303897915`*^9}, {3.7806789332048225`*^9, 3.780678933210821*^9}, {
+  3.780682076815765*^9, 3.780682088783948*^9}}]
+}, Open  ]],
+
+Cell["Define population centers and facilities.", "ItemNumbered",
+ CellChangeTimes->{{3.780329276188409*^9, 3.7803293011823826`*^9}, {
+   3.7803296031889906`*^9, 3.7803296394264975`*^9}, {3.780678753422472*^9, 
+   3.7806788303897915`*^9}, 3.7806789332048225`*^9, {3.780678964883665*^9, 
+   3.7806790038531685`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Population centers are somewhat uniformly distributed, and each has \
+coordinates and a population.\
+\>", "SubitemNumbered",
+ CellChangeTimes->{{3.780329276188409*^9, 3.7803293011823826`*^9}, {
+   3.7803296031889906`*^9, 3.7803296394264975`*^9}, {3.780678753422472*^9, 
+   3.7806788303897915`*^9}, 3.7806789332048225`*^9, {3.780678964883665*^9, 
+   3.780679059001484*^9}}],
+
+Cell["Facilities are somewhat clustered near the center.", "SubitemNumbered",
+ CellChangeTimes->{{3.780329276188409*^9, 3.7803293011823826`*^9}, {
+   3.7803296031889906`*^9, 3.7803296394264975`*^9}, {3.780678753422472*^9, 
+   3.7806788303897915`*^9}, 3.7806789332048225`*^9, {3.780678964883665*^9, 
+   3.780679061739606*^9}}],
+
+Cell["\<\
+All population centers and facilities receive walking arcs to their nearest \
+stops depending on the grid square that they fall into. They can also be \
+adjacent to each other if inside the same grid square.\
+\>", "SubitemNumbered",
+ CellChangeTimes->{{3.780329276188409*^9, 3.7803293011823826`*^9}, {
+   3.7803296031889906`*^9, 3.7803296394264975`*^9}, {3.780678753422472*^9, 
+   3.7806788303897915`*^9}, 3.7806789332048225`*^9, {3.780678964883665*^9, 
+   3.7806791448949413`*^9}, {3.7806868399016275`*^9, 3.780686839909628*^9}}]
+}, Open  ]],
+
+Cell["Define OD and fleet sizes.", "ItemNumbered",
+ CellChangeTimes->{{3.780329276188409*^9, 3.7803293011823826`*^9}, {
+   3.7803296031889906`*^9, 3.7803296394264975`*^9}, {3.780678753422472*^9, 
+   3.7806788303897915`*^9}, 3.7806789332048225`*^9, {3.780678964883665*^9, 
+   3.7806791520776386`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+For each stop, decide the travel demand to all other stops according to a \
+gamma distribution based on Euclidean distance.\
+\>", "SubitemNumbered",
+ CellChangeTimes->{{3.780329276188409*^9, 3.7803293011823826`*^9}, {
+   3.7803296031889906`*^9, 3.7803296394264975`*^9}, {3.780678753422472*^9, 
+   3.7806788303897915`*^9}, 3.7806789332048225`*^9, {3.780678964883665*^9, 
+   3.7806791963604383`*^9}}],
+
+Cell["\<\
+The total outgoing travel demand for a stop should also depend on its \
+population. For each stop, determine the nearest population center, and \
+equally distribute the center\[CloseCurlyQuote]s population to all of its \
+associated stops.\
+\>", "SubitemNumbered",
+ CellChangeTimes->{{3.780329276188409*^9, 3.7803293011823826`*^9}, {
+   3.7803296031889906`*^9, 3.7803296394264975`*^9}, {3.780678753422472*^9, 
+   3.7806788303897915`*^9}, 3.7806789332048225`*^9, {3.780678964883665*^9, 
+   3.7806792946319265`*^9}}],
+
+Cell[TextData[{
+ "There should also be an overall scaling factor to adjust the daily traffic \
+as a fraction of the overall population (my Chicago data shows that the \
+number of daily boardings is approximately ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"2", "/", "3"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " of the total population)."
+}], "SubitemNumbered",
+ CellChangeTimes->{{3.780329276188409*^9, 3.7803293011823826`*^9}, {
+   3.7803296031889906`*^9, 3.7803296394264975`*^9}, {3.780678753422472*^9, 
+   3.7806788303897915`*^9}, 3.7806789332048225`*^9, {3.780678964883665*^9, 
+   3.78067931417766*^9}, {3.7806796120661387`*^9, 3.780679639303404*^9}, {
+   3.7806796862473507`*^9, 3.780679686257347*^9}}],
+
+Cell["\<\
+The fleet sizes of each route should be proportional to the number of people \
+using them, which can be quickly modeled by assuming that all of the travel \
+demand travels along its shortest path.\
+\>", "SubitemNumbered",
+ CellChangeTimes->{{3.780329276188409*^9, 3.7803293011823826`*^9}, {
+   3.7803296031889906`*^9, 3.7803296394264975`*^9}, {3.780678753422472*^9, 
+   3.7806788303897915`*^9}, 3.7806789332048225`*^9, {3.780678964883665*^9, 
+   3.78067931417766*^9}, {3.7806796120661387`*^9, 3.780679639303404*^9}, {
+   3.7806796862473507`*^9, 3.780679754172571*^9}, {3.7806866365658283`*^9, 
+   3.7806866368507576`*^9}, {3.780686854573923*^9, 3.7806868545819197`*^9}}]
+}, Open  ]],
+
+Cell["Evaluate the objective function\[CloseCurlyQuote]s shape.", \
+"ItemNumbered",
+ CellChangeTimes->{{3.780329276188409*^9, 3.7803293011823826`*^9}, {
+   3.7803296031889906`*^9, 3.7803296394264975`*^9}, {3.780678753422472*^9, 
+   3.7806788303897915`*^9}, 3.7806789332048225`*^9, {3.780678964883665*^9, 
+   3.78067931417766*^9}, {3.7806796120661387`*^9, 3.780679639303404*^9}, {
+   3.7806796862473507`*^9, 3.780679754172571*^9}, {3.7806866365658283`*^9, 
+   3.7806866368507576`*^9}, {3.780686854573923*^9, 3.7806868700739527`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Pick several pairs of lines at random. For each pair, vary both of the fleet \
+sizes within a range and calculate the objective value for each.\
+\>", "SubitemNumbered",
+ CellChangeTimes->{{3.780329276188409*^9, 3.7803293011823826`*^9}, {
+   3.7803296031889906`*^9, 3.7803296394264975`*^9}, {3.780678753422472*^9, 
+   3.7806788303897915`*^9}, 3.7806789332048225`*^9, {3.780678964883665*^9, 
+   3.78067931417766*^9}, {3.7806796120661387`*^9, 3.780679639303404*^9}, {
+   3.7806796862473507`*^9, 3.780679754172571*^9}, {3.7806866365658283`*^9, 
+   3.7806866368507576`*^9}, {3.780686854573923*^9, 3.780686940147503*^9}}],
+
+Cell["\<\
+Use these results to generate a table of objective values, displayed as an \
+array plot, in order to show how rough the objective looks.\
+\>", "SubitemNumbered",
+ CellChangeTimes->{{3.780329276188409*^9, 3.7803293011823826`*^9}, {
+   3.7803296031889906`*^9, 3.7803296394264975`*^9}, {3.780678753422472*^9, 
+   3.7806788303897915`*^9}, 3.7806789332048225`*^9, {3.780678964883665*^9, 
+   3.78067931417766*^9}, {3.7806796120661387`*^9, 3.780679639303404*^9}, {
+   3.7806796862473507`*^9, 3.780679754172571*^9}, {3.7806866365658283`*^9, 
+   3.7806866368507576`*^9}, {3.780686854573923*^9, 3.7806869729809537`*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
 },
 WindowSize->{759, 833},
-WindowMargins->{{128, Automatic}, {Automatic, 19}},
+WindowMargins->{{94, Automatic}, {Automatic, 62}},
 FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (April 11, 2016)",
 StyleDefinitions->"Default.nb"
 ]
@@ -35,9 +210,37 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 99, 1, 43, "Subsection"],
+Cell[CellGroupData[{
+Cell[704, 27, 218, 3, 30, "ItemNumbered"],
+Cell[CellGroupData[{
+Cell[947, 34, 579, 9, 58, "SubitemNumbered"],
+Cell[1529, 45, 293, 3, 24, "SubitemNumbered"],
+Cell[1825, 50, 426, 7, 41, "SubitemNumbered"],
+Cell[2254, 59, 428, 7, 41, "SubitemNumbered"]
+}, Open  ]],
+Cell[2697, 69, 315, 4, 30, "ItemNumbered"],
+Cell[CellGroupData[{
+Cell[3037, 77, 382, 7, 41, "SubitemNumbered"],
+Cell[3422, 86, 325, 4, 24, "SubitemNumbered"],
+Cell[3750, 92, 540, 8, 58, "SubitemNumbered"]
+}, Open  ]],
+Cell[4305, 103, 300, 4, 30, "ItemNumbered"],
+Cell[CellGroupData[{
+Cell[4630, 111, 408, 7, 41, "SubitemNumbered"],
+Cell[5041, 120, 524, 9, 58, "SubitemNumbered"],
+Cell[5568, 131, 721, 14, 58, "SubitemNumbered"],
+Cell[6292, 147, 680, 10, 58, "SubitemNumbered"]
+}, Open  ]],
+Cell[6987, 160, 532, 7, 30, "ItemNumbered"],
+Cell[CellGroupData[{
+Cell[7544, 171, 625, 9, 41, "SubitemNumbered"],
+Cell[8172, 182, 620, 9, 41, "SubitemNumbered"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
 }
 ]
 *)
-
-(* End of internal cache information *)
 
