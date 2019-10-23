@@ -10,18 +10,31 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10067,        238]
-NotebookOptionsPosition[      8832,        196]
-NotebookOutlinePosition[      9175,        211]
-CellTagsIndexPosition[      9132,        208]
+NotebookDataLength[     14378,        374]
+NotebookOptionsPosition[     12478,        309]
+NotebookOutlinePosition[     12821,        324]
+CellTagsIndexPosition[     12778,        321]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
-Cell["Procedure", "Subsection",
- CellChangeTimes->{{3.7803292543397837`*^9, 3.780329256110973*^9}}],
+Cell["Preamble", "Chapter",
+ CellChangeTimes->{{3.780771541527303*^9, 3.780771547398859*^9}}],
+
+Cell["\<\
+This section contains the program\[CloseCurlyQuote]s pseudocode and a few \
+definitions that should only need to be executed once (as long as the \
+parameters are not changed).\
+\>", "Text",
+ CellChangeTimes->{{3.780771585873912*^9, 3.780771622034917*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Pseudocode", "Section",
+ CellChangeTimes->{{3.7803292543397837`*^9, 3.780329256110973*^9}, {
+  3.7807721136837177`*^9, 3.7807721151272697`*^9}}],
 
 Cell[CellGroupData[{
 
@@ -192,6 +205,106 @@ array plot, in order to show how rough the objective looks.\
    3.7806866368507576`*^9}, {3.780686854573923*^9, 3.7806869729809537`*^9}}]
 }, Open  ]]
 }, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Function Definitions", "Section",
+ CellChangeTimes->{{3.7806899010821943`*^9, 3.780689904941957*^9}, {
+  3.7807721414859934`*^9, 3.7807721439066253`*^9}}],
+
+Cell["\<\
+These are functions required for every execution and should only need to be \
+defined once.\
+\>", "Text",
+ CellChangeTimes->{{3.7806899080889482`*^9, 3.7806899317013764`*^9}, 
+   3.780772151246967*^9}],
+
+Cell[BoxData[
+ RowBox[{"(*", "**)"}]], "Input",
+ CellChangeTimes->{{3.7807714622225385`*^9, 3.780771466775069*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Parameters", "Section",
+ CellChangeTimes->{{3.7807714143939443`*^9, 3.7807714158685155`*^9}}],
+
+Cell["\<\
+The parameters defined below can be changed to generate different types of \
+example network. Everything below this point should also be re-executed when \
+the parameters are updated.\
+\>", "Text",
+ CellChangeTimes->{{3.780771419110817*^9, 3.780771456481101*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"hlines", "=", "4"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "number", " ", "of", " ", "grid", " ", "lines", " ", "running", " ", 
+    "horizontally"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"vlines", "=", "6"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "number", " ", "of", " ", "grid", " ", "lines", " ", "running", " ", 
+    "vertically"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"hgap", "=", "0.0625"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{"distance", " ", "between", " ", "horizontal", " ", "lines", " ", 
+    RowBox[{"(", "mi", ")"}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"vgap", "=", "0.0625"}], ";", 
+  RowBox[{"(*", " ", 
+   RowBox[{"distance", " ", "between", " ", "vertical", " ", "lines", " ", 
+    RowBox[{"(", "mi", ")"}]}], " ", "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.7807714685817165`*^9, 3.780771469692157*^9}, {
+  3.7807722664852037`*^9, 3.7807723285478315`*^9}, {3.7807723622388773`*^9, 
+  3.7807724136701546`*^9}}],
+
+Cell[" ", "Text",
+ Editable->False,
+ Selectable->False,
+ CellFrame->{{0, 0}, {0, 0.5}},
+ ShowCellBracket->False,
+ CellMargins->{{0, 0}, {1, 1}},
+ CellElementSpacings->{"CellMinHeight"->1},
+ CellFrameMargins->0,
+ CellFrameColor->RGBColor[0, 0, 1],
+ CellSize->{Inherited, 3}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Execution", "Chapter",
+ CellChangeTimes->{{3.780771565651047*^9, 3.780771567477462*^9}}],
+
+Cell["\<\
+The contents of the following sections may need to be repeatedly re-executed \
+to generate satisfactory example networks.\
+\>", "Text",
+ CellChangeTimes->{{3.7807716306375384`*^9, 3.780771649293496*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Network Construction", "Section",
+ CellChangeTimes->{{3.780771521038786*^9, 3.7807715235126934`*^9}, {
+  3.7807720128307896`*^9, 3.7807720163927107`*^9}}],
+
+Cell["\<\
+This section builds the underlying network of stops and other locations, \
+along with the line arcs and walking arcs to connect them. A map of the \
+network is shown once this process is complete.\
+\>", "Text",
+ CellChangeTimes->{{3.78077198108607*^9, 3.7807720376299205`*^9}, {
+  3.7807720965858326`*^9, 3.7807721011810923`*^9}}]
+}, Open  ]]
 }, Open  ]]
 },
 WindowSize->{759, 833},
@@ -211,33 +324,56 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 99, 1, 43, "Subsection"],
+Cell[580, 22, 93, 1, 64, "Chapter"],
+Cell[676, 25, 266, 5, 49, "Text"],
 Cell[CellGroupData[{
-Cell[704, 27, 218, 3, 30, "ItemNumbered"],
+Cell[967, 34, 150, 2, 63, "Section"],
 Cell[CellGroupData[{
-Cell[947, 34, 579, 9, 58, "SubitemNumbered"],
-Cell[1529, 45, 293, 3, 24, "SubitemNumbered"],
-Cell[1825, 50, 426, 7, 41, "SubitemNumbered"],
-Cell[2254, 59, 428, 7, 41, "SubitemNumbered"]
+Cell[1142, 40, 218, 3, 30, "ItemNumbered"],
+Cell[CellGroupData[{
+Cell[1385, 47, 579, 9, 58, "SubitemNumbered"],
+Cell[1967, 58, 293, 3, 24, "SubitemNumbered"],
+Cell[2263, 63, 426, 7, 41, "SubitemNumbered"],
+Cell[2692, 72, 428, 7, 41, "SubitemNumbered"]
 }, Open  ]],
-Cell[2697, 69, 315, 4, 30, "ItemNumbered"],
+Cell[3135, 82, 315, 4, 30, "ItemNumbered"],
 Cell[CellGroupData[{
-Cell[3037, 77, 382, 7, 41, "SubitemNumbered"],
-Cell[3422, 86, 325, 4, 24, "SubitemNumbered"],
-Cell[3750, 92, 540, 8, 58, "SubitemNumbered"]
+Cell[3475, 90, 382, 7, 41, "SubitemNumbered"],
+Cell[3860, 99, 325, 4, 24, "SubitemNumbered"],
+Cell[4188, 105, 540, 8, 58, "SubitemNumbered"]
 }, Open  ]],
-Cell[4305, 103, 300, 4, 30, "ItemNumbered"],
+Cell[4743, 116, 300, 4, 30, "ItemNumbered"],
 Cell[CellGroupData[{
-Cell[4630, 111, 408, 7, 41, "SubitemNumbered"],
-Cell[5041, 120, 524, 9, 58, "SubitemNumbered"],
-Cell[5568, 131, 721, 14, 58, "SubitemNumbered"],
-Cell[6292, 147, 680, 10, 58, "SubitemNumbered"]
+Cell[5068, 124, 408, 7, 41, "SubitemNumbered"],
+Cell[5479, 133, 524, 9, 58, "SubitemNumbered"],
+Cell[6006, 144, 721, 14, 58, "SubitemNumbered"],
+Cell[6730, 160, 680, 10, 58, "SubitemNumbered"]
 }, Open  ]],
-Cell[6987, 160, 532, 7, 30, "ItemNumbered"],
+Cell[7425, 173, 532, 7, 30, "ItemNumbered"],
 Cell[CellGroupData[{
-Cell[7544, 171, 625, 9, 41, "SubitemNumbered"],
-Cell[8172, 182, 620, 9, 41, "SubitemNumbered"]
+Cell[7982, 184, 625, 9, 41, "SubitemNumbered"],
+Cell[8610, 195, 620, 9, 41, "SubitemNumbered"]
 }, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9291, 211, 160, 2, 63, "Section"],
+Cell[9454, 215, 211, 5, 30, "Text"],
+Cell[9668, 222, 115, 2, 31, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9820, 229, 99, 1, 63, "Section"],
+Cell[9922, 232, 273, 5, 49, "Text"],
+Cell[10198, 239, 1089, 28, 112, "Input"],
+Cell[11290, 269, 273, 9, 5, "Text"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11612, 284, 94, 1, 64, "Chapter"],
+Cell[11709, 287, 213, 4, 49, "Text"],
+Cell[CellGroupData[{
+Cell[11947, 295, 160, 2, 63, "Section"],
+Cell[12110, 299, 340, 6, 49, "Text"]
 }, Open  ]]
 }, Open  ]]
 }
