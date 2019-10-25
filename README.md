@@ -12,7 +12,7 @@ This program is meant to procedurally generate test instances which can be quick
 
 The procedural generation should rely on a set of input parameters which can be quickly changed by the user. Based on these parameters, a random problem instance should be generated along with some metrics for evaluating whether the instance is interesting. There should also be some functions for quickly generating output files based on the current example network.
 
-For simplicity, our generated network is based on a square grid made up of vertical and horizontal transit lines. A stop exists at each grid intersection as well as intermittently along each line. Population centers and primary care facilities are randomly distributed within the rectangular grid area.
+For simplicity, our generated network is based on a square grid made up of vertical and horizontal transit lines. A stop exists at each grid intersection as well as intermittently along each line. Population centers and primary care facilities are randomly distributed within the rectangular grid area, with population centers being somewhat evenly spaced and facilities being completely random.
 
 ## Output Format
 
