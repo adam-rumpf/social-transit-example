@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    481505,       9411]
-NotebookOptionsPosition[    478622,       9316]
-NotebookOutlinePosition[    478965,       9331]
-CellTagsIndexPosition[    478922,       9328]
+NotebookDataLength[    484972,       9494]
+NotebookOptionsPosition[    481814,       9390]
+NotebookOutlinePosition[    482157,       9405]
+CellTagsIndexPosition[    482114,       9402]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -156,15 +156,16 @@ as a fraction of the overall population (my Chicago data shows that the \
 number of daily boardings is approximately ",
  Cell[BoxData[
   FormBox[
-   RowBox[{"2", "/", "3"}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
- " of the total population)."
+   RowBox[{"2", "/", "3"}], TraditionalForm]]],
+ " of the total population, but if we are modeling a smaller time period that \
+fraction should be much smaller)."
 }], "SubitemNumbered",
  CellChangeTimes->{{3.780329276188409*^9, 3.7803293011823826`*^9}, {
    3.7803296031889906`*^9, 3.7803296394264975`*^9}, {3.780678753422472*^9, 
    3.7806788303897915`*^9}, 3.7806789332048225`*^9, {3.780678964883665*^9, 
    3.78067931417766*^9}, {3.7806796120661387`*^9, 3.780679639303404*^9}, {
-   3.7806796862473507`*^9, 3.780679686257347*^9}}],
+   3.7806796862473507`*^9, 3.780679686257347*^9}, {3.7809617292180715`*^9, 
+   3.780961741597103*^9}}],
 
 Cell["\<\
 The fleet sizes of each route should be proportional to the number of people \
@@ -9073,21 +9074,107 @@ Cell[BoxData[
        RowBox[{"{", 
         RowBox[{
          RowBox[{"Length", "[", "stops", "]"}], ",", 
-         RowBox[{"Length", "[", "stops", "]"}]}], "}"}]}], "]"}]}], ";", 
-    RowBox[{"(*", " ", 
-     RowBox[{"full", " ", "OD", " ", "matrix"}], " ", "*)"}], 
-    "\[IndentingNewLine]", "\[IndentingNewLine]", 
-    RowBox[{"(*", " ", 
-     RowBox[{"Display", " ", "results"}], " ", "*)"}], "\[IndentingNewLine]", 
-    RowBox[{"Plot", "[", 
+         RowBox[{"Length", "[", "stops", "]"}]}], "}"}]}], "]"}]}], ";"}], 
+   RowBox[{"(*", " ", 
+    RowBox[{"full", " ", "OD", " ", "matrix"}], " ", "*)"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"OD", " ", 
+      RowBox[{"Matrix", ":", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "Generate"}], " ", "a", " ", "list", " ", "of", " ", 
+         "stops", " ", "associated", " ", "with", " ", "each", " ", 
+         "popluation", " ", 
+         RowBox[{"center", ".", "\[IndentingNewLine]", 
+          RowBox[{"-", "Find"}]}], " ", "the", " ", "fraction", " ", "of", 
+         " ", "transit"}], "-", 
+        RowBox[{
+        "using", " ", "population", " ", "of", " ", "each", " ", 
+         "center"}]}]}]}], ",", " ", 
      RowBox[{
-      RowBox[{"gamma", "[", "x", "]"}], ",", 
-      RowBox[{"{", 
-       RowBox[{"x", ",", "0", ",", 
-        RowBox[{"3", "tripmean"}]}], "}"}]}], "]"}]}], 
+     "and", " ", "use", " ", "that", " ", "along", " ", "with", " ", "the", 
+      " ", "stop", " ", "lists", " ", "to", " ", 
+      RowBox[{"(", "approximately", ")"}], " ", "evenly", " ", "distribute", 
+      " ", "the", " ", "population", " ", 
+      RowBox[{"center", "'"}], "s", " ", "population", " ", "to", " ", "each",
+       " ", "stop", " ", "as", " ", "origin", " ", 
+      RowBox[{"traffic", ".", "\[IndentingNewLine]", 
+       RowBox[{"-", "Use"}]}], " ", "Manhattan", " ", "distance", " ", "to", 
+      " ", "approximately", " ", "calculate", " ", "travel", " ", "times", 
+      " ", "from", " ", "one", " ", "stop", " ", "to", " ", "every", " ", 
+      "other", " ", 
+      RowBox[{"stop", ".", "\[IndentingNewLine]", 
+       RowBox[{"-", "Use"}]}], " ", "these", " ", "times", " ", "along", " ", 
+      "with", " ", "the", " ", "gamma", " ", "function", " ", "to", " ", 
+      "generate", " ", "a", " ", "trip", " ", "probability", " ", "weight", 
+      " ", "for", " ", "that", " ", "OD", " ", 
+      RowBox[{"pair", ".", "\[IndentingNewLine]", 
+       RowBox[{"-", "Use"}]}], " ", "the", " ", "weight", " ", "to", " ", 
+      "distribute", " ", "the", " ", "origin", " ", "traffic", " ", "to", " ",
+       "each", " ", "of", " ", "the", " ", "destinations", " ", "for", " ", 
+      "the", " ", "full", " ", "OD", " ", 
+      RowBox[{"demand", ".", "\[IndentingNewLine]", 
+       RowBox[{"-", "Add"}]}], " ", "some", " ", "random", " ", "noise"}], 
+     ",", " ", 
+     RowBox[{
+     "and", " ", "zero", " ", "out", " ", "travel", " ", "demands", " ", 
+      "that", " ", "are", " ", "too", " ", 
+      RowBox[{"small", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"Fleet", " ", 
+      RowBox[{"Size", ":", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"-", "For"}], " ", "each", " ", "OD", " ", "pair", " ", 
+        RowBox[{"(", 
+         RowBox[{"with", " ", "nonzero", " ", "demand"}], ")"}]}]}]}], ",", 
+     " ", 
+     RowBox[{
+     "find", " ", "the", " ", "shortest", " ", "path", " ", "on", " ", "the", 
+      " ", "graph", " ", "and", " ", "take", " ", "note", " ", "of", " ", 
+      "which", " ", "arcs", " ", "are", " ", 
+      RowBox[{"used", ".", " ", "Maintain"}], " ", "for", " ", "each", " ", 
+      "arc", " ", "a", " ", "tally", " ", "of", " ", "the", " ", "total", " ",
+       "traffic", " ", "through", " ", 
+      RowBox[{"it", ".", " ", "Alternatively"}]}], ",", " ", 
+     RowBox[{"for", " ", "simplicity"}], ",", " ", 
+     RowBox[{
+     "maintain", " ", "a", " ", "tally", " ", "for", " ", "the", " ", "lines",
+       " ", "instead", " ", "of", " ", "individual", " ", 
+      RowBox[{"arcs", ".", "\[IndentingNewLine]", 
+       RowBox[{"-", "Apply"}]}], " ", "the", " ", "vehicles", " ", 
+      "proportionally", " ", "to", " ", "the", " ", "lines", " ", "according",
+       " ", "to", " ", "their", " ", "travel", " ", "volume"}], ",", " ", 
+     RowBox[{"plus", " ", "some", " ", "constant"}], ",", " ", 
+     RowBox[{"and", " ", "then", " ", "add", " ", "some", " ", "random", " ", 
+      RowBox[{"noise", ".", "\[IndentingNewLine]", 
+       RowBox[{"-", "Calculate"}]}], " ", "a", " ", "load", " ", "factor", 
+      " ", "for", " ", "reference"}], ",", " ", 
+     RowBox[{
+      RowBox[{
+      "since", " ", "ideally", " ", "we", " ", "would", " ", "like", " ", 
+       "for", " ", "the", " ", "total", " ", "travel", " ", "demand", " ", 
+       "to", " ", "be", " ", "1"}], "-", 
+      RowBox[{"1.5", "x", " ", "the", " ", "total", " ", "vehicle", " ", 
+       RowBox[{"capacity", "."}]}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Display", " ", "results"}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"gamma", "[", "x", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", 
+       RowBox[{"3", "tripmean"}]}], "}"}]}], "]"}], 
    "\[IndentingNewLine]"}]}]], "Input",
  CellChangeTimes->{{3.780960801145543*^9, 3.78096088812078*^9}, {
-  3.7809610052002187`*^9, 3.7809610780168753`*^9}}],
+  3.7809610052002187`*^9, 3.7809610780168753`*^9}, {3.780961435490259*^9, 
+  3.7809614432387743`*^9}, {3.780961485252282*^9, 3.780961601995867*^9}, {
+  3.7809616772067504`*^9, 3.780961694350253*^9}, {3.780962229305658*^9, 
+  3.7809622435980744`*^9}, {3.7809622836022453`*^9, 3.780962464251337*^9}}],
 
 Cell[BoxData[
  GraphicsBox[{{{}, {}, 
@@ -9231,56 +9318,28 @@ zxyFLluSyCl8J4ciyzdTCwsUup7zIsKvXA7/A8HHwBo=
   Ticks->{Automatic, Automatic}]], "Output",
  CellChangeTimes->{{3.7809608905240088`*^9, 3.780960893600004*^9}, 
    3.780961036545167*^9}]
+}, Open  ]]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Objective Topology", "Section",
+ CellChangeTimes->{{3.7809624913336525`*^9, 3.780962498586327*^9}}],
+
+Cell["\<\
+The section below randomly selects pairs of transit lines, adjusts both of \
+their fleet sizes within ranges around their initial values, and displays \
+tables of the objective value with respect to the two decision variables. \
+Ideally we would like to see a rough response.\
+\>", "Text",
+ CellChangeTimes->{{3.7809625026160355`*^9, 3.780962565935731*^9}}],
 
 Cell[BoxData[
  RowBox[{"(*", " ", 
   RowBox[{
    RowBox[{
-   "Move", " ", "into", " ", "the", " ", "OD", " ", "travel", " ", "demand", 
-    " ", "module"}], ",", " ", 
-   RowBox[{
-   "which", " ", "also", " ", "involves", " ", "the", " ", "initial", " ", 
-    "fleet", " ", 
-    RowBox[{"sizes", ".", "\[IndentingNewLine]", "Use"}], " ", "a", " ", 
-    "Voronoi", " ", "diagram", " ", "to", " ", "associate", " ", "each", " ", 
-    "stop", " ", "with", " ", "its", " ", "nearest", " ", "population", " ", 
-    "center"}], ",", " ", 
-   RowBox[{
-   "and", " ", "distribute", " ", "a", " ", "fraction", " ", "of", " ", "its",
-     " ", "initial", " ", "population", " ", "evenly", " ", "to", " ", "all", 
-    " ", "of", " ", "those", " ", 
-    RowBox[{"stops", ".", "\[IndentingNewLine]", "Then"}], " ", "for", " ", 
-    "each", " ", "stop", " ", "generate", " ", "its", " ", "proportional", 
-    " ", "demand", " ", "to", " ", "every", " ", "other", " ", "stop", " ", 
-    "using", " ", "a", " ", "Gamma", " ", "distribution", " ", "and", " ", 
-    "Euclidean", " ", 
-    RowBox[{"distance", ".", "\[IndentingNewLine]", "Then"}], " ", "actually",
-     " ", "assign", " ", "all", " ", "of", " ", "that", " ", 
-    RowBox[{"stop", "'"}], "s", " ", "populaiton", " ", "to", " ", "all", " ",
-     "of", " ", "the", " ", "OD", " ", "pairs", " ", "proportionally"}], ",", 
-   " ", 
-   RowBox[{
-   "plus", " ", "some", " ", "noise", " ", "and", " ", "zeroing", " ", "out", 
-    " ", "low", " ", "enough", " ", 
-    RowBox[{"demands", ".", "\[IndentingNewLine]", "Then"}], " ", "find", " ",
-     "the", " ", "shortest", " ", "path", " ", "between", " ", "each", " ", 
-    "OD", " ", "pair", " ", "and", " ", "assign", " ", "it", " ", "as", " ", 
-    "travel", " ", "demand", " ", "to", " ", "every", " ", "utilized", " ", 
-    RowBox[{"line", ".", "\[IndentingNewLine]", "Then"}], " ", "decide", " ", 
-    "on", " ", "the", " ", "total", " ", "number", " ", "of", " ", "vehicles",
-     " ", "to", " ", "be", " ", "large", " ", "enough", " ", "to", " ", 
-    "accommodate", " ", "all", " ", "travel", " ", "demand"}], ",", " ", 
-   RowBox[{
-   "and", " ", "distribute", " ", "them", " ", "proportionally", " ", "to", 
-    " ", "each", " ", "line", " ", "based", " ", "on", " ", "total", " ", 
-    RowBox[{"demand", ".", "\[IndentingNewLine]", "Save"}], " ", "this", " ", 
-    "as", " ", "the", " ", "initial", " ", "set", " ", "of", " ", "fleet", 
-    " ", 
-    RowBox[{
-    "sizes", ".", "\[IndentingNewLine]", "\[IndentingNewLine]", "CAN"}], " ", 
-    "WAIT", " ", "UNTIL", " ", "AFTER", " ", "GETTING", " ", "SINGLE", " ", 
-    "SOLVER", " ", 
+   "CAN", " ", "WAIT", " ", "UNTIL", " ", "AFTER", " ", "GETTING", " ", 
+    "SINGLE", " ", "SOLVER", " ", 
     RowBox[{"DONE", ":", "\[IndentingNewLine]", 
      RowBox[{
      "Then", " ", "move", " ", "into", " ", "the", " ", "objective", " ", 
@@ -9308,9 +9367,24 @@ Cell[BoxData[
     "able", " ", "to", " ", "look", " ", "at", " ", "waiting", " ", "times", 
     " ", "for", " ", "other", " ", "fleet", " ", 
     RowBox[{"sizes", "."}]}]}], " ", "*)"}]], "Input",
- CellChangeTimes->{{3.780946949636512*^9, 3.780947379699623*^9}, {
-  3.7809556786538897`*^9, 3.780955682576632*^9}, {3.7809569572688885`*^9, 
-  3.780956981954973*^9}}]
+ CellChangeTimes->{{3.7809625730064435`*^9, 3.780962574977812*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["File Export", "Section",
+ CellChangeTimes->{{3.7809626146101227`*^9, 3.7809626162315845`*^9}}],
+
+Cell["\<\
+If all of the above tests are to the user\[CloseCurlyQuote]s liking, the \
+following section can be used to export the full set of example network \
+files, plus an additional node coordinate file for use in drawing the network.\
+\>", "Text",
+ CellChangeTimes->{{3.7809626206251726`*^9, 3.7809626535056324`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", "WIP", " ", "*)"}]], "Input",
+ CellChangeTimes->{{3.780962657106495*^9, 3.7809626591588383`*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
@@ -9354,63 +9428,72 @@ Cell[5285, 124, 300, 4, 30, "ItemNumbered"],
 Cell[CellGroupData[{
 Cell[5610, 132, 408, 7, 41, "SubitemNumbered"],
 Cell[6021, 141, 524, 9, 58, "SubitemNumbered"],
-Cell[6548, 152, 721, 14, 58, "SubitemNumbered"],
-Cell[7272, 168, 680, 10, 58, "SubitemNumbered"]
+Cell[6548, 152, 825, 15, 75, "SubitemNumbered"],
+Cell[7376, 169, 680, 10, 58, "SubitemNumbered"]
 }, Open  ]],
-Cell[7967, 181, 532, 7, 30, "ItemNumbered"],
+Cell[8071, 182, 532, 7, 30, "ItemNumbered"],
 Cell[CellGroupData[{
-Cell[8524, 192, 625, 9, 41, "SubitemNumbered"],
-Cell[9152, 203, 620, 9, 41, "SubitemNumbered"]
+Cell[8628, 193, 625, 9, 41, "SubitemNumbered"],
+Cell[9256, 204, 620, 9, 41, "SubitemNumbered"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9833, 219, 99, 1, 63, "Section"],
-Cell[9935, 222, 273, 5, 49, "Text"],
-Cell[10211, 229, 7800, 194, 632, "Input"]
+Cell[9937, 220, 99, 1, 63, "Section"],
+Cell[10039, 223, 273, 5, 49, "Text"],
+Cell[10315, 230, 7800, 194, 632, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18048, 428, 96, 1, 63, "Section"],
-Cell[18147, 431, 187, 4, 30, "Text"],
-Cell[18337, 437, 721, 22, 60, "Input"],
-Cell[19061, 461, 273, 9, 5, "Text"]
+Cell[18152, 429, 96, 1, 63, "Section"],
+Cell[18251, 432, 187, 4, 30, "Text"],
+Cell[18441, 438, 721, 22, 60, "Input"],
+Cell[19165, 462, 273, 9, 5, "Text"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19383, 476, 94, 1, 64, "Chapter"],
-Cell[19480, 479, 328, 6, 49, "Text"],
+Cell[19487, 477, 94, 1, 64, "Chapter"],
+Cell[19584, 480, 328, 6, 49, "Text"],
 Cell[CellGroupData[{
-Cell[19833, 489, 160, 2, 63, "Section"],
-Cell[19996, 493, 340, 6, 49, "Text"],
+Cell[19937, 490, 160, 2, 63, "Section"],
+Cell[20100, 494, 340, 6, 49, "Text"],
 Cell[CellGroupData[{
-Cell[20361, 503, 54687, 1258, 5130, "Input"],
+Cell[20465, 504, 54687, 1258, 5130, "Input"],
 Cell[CellGroupData[{
-Cell[75073, 1765, 258, 3, 23, "Print"],
-Cell[75334, 1770, 233, 3, 23, "Print"],
-Cell[75570, 1775, 236, 3, 23, "Print"],
-Cell[75809, 1780, 236, 3, 23, "Print"],
-Cell[76048, 1785, 233, 3, 23, "Print"]
+Cell[75177, 1766, 258, 3, 23, "Print"],
+Cell[75438, 1771, 233, 3, 23, "Print"],
+Cell[75674, 1776, 236, 3, 23, "Print"],
+Cell[75913, 1781, 236, 3, 23, "Print"],
+Cell[76152, 1786, 233, 3, 23, "Print"]
 }, Open  ]],
-Cell[76296, 1791, 335498, 6053, 282, 290993, 5322, "CachedBoxData", \
+Cell[76400, 1792, 335498, 6053, 282, 290993, 5322, "CachedBoxData", \
 "BoxData", "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[411843, 7850, 174, 2, 63, "Section"],
-Cell[412020, 7854, 220, 4, 49, "Text"],
+Cell[411947, 7851, 174, 2, 63, "Section"],
+Cell[412124, 7855, 220, 4, 49, "Text"],
 Cell[CellGroupData[{
-Cell[412265, 7862, 30764, 736, 3232, "Input"],
-Cell[443032, 8600, 21926, 444, 272, "Output"]
+Cell[412369, 7863, 30764, 736, 3232, "Input"],
+Cell[443136, 8601, 21926, 444, 272, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[465007, 9050, 115, 1, 63, "Section"],
-Cell[465125, 9053, 260, 5, 49, "Text"],
+Cell[465111, 9051, 115, 1, 63, "Section"],
+Cell[465229, 9054, 260, 5, 49, "Text"],
 Cell[CellGroupData[{
-Cell[465410, 9062, 1015, 27, 152, "Input"],
-Cell[466428, 9091, 7855, 141, 229, "Output"]
+Cell[465514, 9063, 5567, 113, 652, "Input"],
+Cell[471084, 9178, 7855, 141, 229, "Output"]
+}, Open  ]]
 }, Open  ]],
-Cell[474298, 9235, 4296, 77, 552, "Input"]
+Cell[CellGroupData[{
+Cell[478988, 9325, 105, 1, 63, "Section"],
+Cell[479096, 9328, 367, 6, 68, "Text"],
+Cell[479466, 9336, 1725, 33, 232, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[481228, 9374, 100, 1, 63, "Section"],
+Cell[481331, 9377, 321, 5, 49, "Text"],
+Cell[481655, 9384, 131, 2, 31, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
