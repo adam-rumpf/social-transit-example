@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    168890,       4047]
-NotebookOptionsPosition[    166243,       3960]
-NotebookOutlinePosition[    166586,       3975]
-CellTagsIndexPosition[    166543,       3972]
+NotebookDataLength[    167884,       4028]
+NotebookOptionsPosition[    165239,       3941]
+NotebookOutlinePosition[    165582,       3956]
+CellTagsIndexPosition[    165539,       3953]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -3496,39 +3496,20 @@ Ideally we would like to see a rough response.\
  CellChangeTimes->{{3.7809625026160355`*^9, 3.780962565935731*^9}}],
 
 Cell[BoxData[
- RowBox[{"(*", " ", 
-  RowBox[{
+ RowBox[{
+  RowBox[{"(*", " ", 
    RowBox[{
-   "CAN", " ", "WAIT", " ", "UNTIL", " ", "AFTER", " ", "GETTING", " ", 
-    "SINGLE", " ", "SOLVER", " ", 
-    RowBox[{"DONE", ":", "\[IndentingNewLine]", 
-     RowBox[{
-     "Then", " ", "move", " ", "into", " ", "the", " ", "objective", " ", 
-      "calculation", " ", 
-      RowBox[{"module", ".", "\[IndentingNewLine]", "Write"}], " ", "a", " ", 
-      "simple", " ", "program", " ", "to", " ", "calculate", " ", "pairwise", 
-      " ", "network", " ", "distances", " ", "based", " ", "on", " ", "the", 
-      " ", "weighted", " ", 
-      RowBox[{"graph", ".", "\[IndentingNewLine]", "Write"}], " ", "a", " ", 
-      "program", " ", "to", " ", "evaluate", " ", "the", " ", "facility", " ",
-       "metric", " ", "of", " ", "any", " ", "facility"}]}]}], ",", " ", 
-   RowBox[{
-   "and", " ", "then", " ", "the", " ", "population", " ", "metric", " ", 
-    "of", " ", "any", " ", "population"}], ",", " ", 
-   RowBox[{
-    RowBox[{"and", " ", "finally", " ", "the", " ", "overall", " ", "k"}], 
-    "-", 
-    RowBox[{"sum", " ", 
-     RowBox[{"objective", ".", "\[IndentingNewLine]", "All"}], " ", "of", " ",
-      "the", " ", "above", " ", "depends", " ", "on", " ", "the", " ", 
-     "waiting", " ", "times", " ", "that", " ", "come", " ", "from", " ", 
-     "the", " ", "initial", " ", "fleet", " ", "sizes"}]}], ",", " ", 
-   RowBox[{
-   "but", " ", "we", " ", "also", " ", "need", " ", "to", " ", "be", " ", 
-    "able", " ", "to", " ", "look", " ", "at", " ", "waiting", " ", "times", 
-    " ", "for", " ", "other", " ", "fleet", " ", 
-    RowBox[{"sizes", "."}]}]}], " ", "*)"}]], "Input",
- CellChangeTimes->{{3.7809625730064435`*^9, 3.780962574977812*^9}}]
+    RowBox[{"Work", " ", "in", " ", 
+     RowBox[{"progress", ".", "\[IndentingNewLine]", "This"}], " ", "can", 
+     " ", "either", " ", "consist", " ", "of", " ", "generating", " ", "2", 
+     "D", " ", "arrays", " ", "of", " ", "pairs", " ", "of", " ", "fleet", 
+     " ", "sizes", " ", "being", " ", "altered"}], ",", " ", 
+    RowBox[{
+    "or", " ", "just", " ", "single", " ", "fleets", " ", "if", " ", "that", 
+     " ", "is", " ", "taking", " ", "too", " ", 
+     RowBox[{"long", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.7809625730064435`*^9, 3.780962574977812*^9}, {
+  3.781038286038891*^9, 3.78103832154051*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4026,12 +4007,12 @@ Cell[22772, 562, 328, 6, 49, "Text"],
 Cell[CellGroupData[{
 Cell[23125, 572, 160, 2, 63, "Section"],
 Cell[23288, 576, 340, 6, 49, "Text"],
-Cell[23631, 584, 60677, 1403, 5470, "Input"]
+Cell[23631, 584, 60677, 1403, 5390, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[84345, 1992, 174, 2, 63, "Section"],
 Cell[84522, 1996, 220, 4, 49, "Text"],
-Cell[84745, 2002, 31215, 730, 3192, "Input"]
+Cell[84745, 2002, 31215, 730, 3152, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[115997, 2737, 115, 1, 63, "Section"],
@@ -4041,12 +4022,12 @@ Cell[116378, 2747, 30102, 734, 2812, "Input"]
 Cell[CellGroupData[{
 Cell[146517, 3486, 105, 1, 63, "Section"],
 Cell[146625, 3489, 367, 6, 68, "Text"],
-Cell[146995, 3497, 1725, 33, 232, "Input"]
+Cell[146995, 3497, 721, 14, 92, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[148757, 3535, 100, 1, 63, "Section"],
-Cell[148860, 3538, 321, 5, 49, "Text"],
-Cell[149184, 3545, 17031, 411, 1752, "Input"]
+Cell[147753, 3516, 100, 1, 63, "Section"],
+Cell[147856, 3519, 321, 5, 49, "Text"],
+Cell[148180, 3526, 17031, 411, 1752, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
