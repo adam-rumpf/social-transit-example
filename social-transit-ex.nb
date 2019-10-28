@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    183154,       4344]
-NotebookOptionsPosition[    180502,       4257]
-NotebookOutlinePosition[    180845,       4272]
-CellTagsIndexPosition[    180802,       4269]
+NotebookDataLength[    187677,       4510]
+NotebookOptionsPosition[    185026,       4423]
+NotebookOutlinePosition[    185369,       4438]
+CellTagsIndexPosition[    185326,       4435]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -231,196 +231,279 @@ the parameters are updated.\
 Cell[BoxData[{
  RowBox[{
   RowBox[{
-   RowBox[{"hlines", "=", "5"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-    "number", " ", "of", " ", "grid", " ", "lines", " ", "running", " ", 
-     "horizontally"}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"vlines", "=", "7"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-    "number", " ", "of", " ", "grid", " ", "lines", " ", "running", " ", 
-     "vertically"}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"hgap", "=", "0.2"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{"distance", " ", "between", " ", "horizontal", " ", "lines", " ", 
-     RowBox[{"(", "mi", ")"}]}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"vgap", "=", "0.2"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{"distance", " ", "between", " ", "vertical", " ", "lines", " ", 
-     RowBox[{"(", "mi", ")"}]}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"jiggle", "=", "0.002"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-    "random", " ", "displacement", " ", "for", " ", "each", " ", "grid", " ", 
-     "node", " ", 
-     RowBox[{"(", "mi", ")"}]}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"horizon", "=", "60"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{"total", " ", "time", " ", "horizon", " ", 
-     RowBox[{"(", "min", ")"}]}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"minbetween", "=", "0"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-    "minimum", " ", "number", " ", "of", " ", "nodes", " ", "to", " ", 
-     "place", " ", "between", " ", "grid", " ", "intersections"}], " ", 
-    "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"maxbetween", "=", "2"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-    "maximum", " ", "number", " ", "of", " ", "nodes", " ", "to", " ", 
-     "place", " ", "between", " ", "grid", " ", "intersections"}], " ", 
-    "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"wspeed", "=", "0.0455"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{"pedestrian", " ", "walking", " ", "speed", " ", 
-     RowBox[{"(", 
-      RowBox[{"mi", "/", "min"}], ")"}]}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"minbspeed", "=", "0.3"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{"minimum", " ", "bus", " ", "speed", " ", 
-     RowBox[{"(", 
-      RowBox[{"mi", "/", "min"}], ")"}]}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"maxbspeed", "=", "0.5"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{"maximum", " ", "bus", " ", "speed", " ", 
-     RowBox[{"(", 
-      RowBox[{"mi", "/", "min"}], ")"}]}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"minbstop", "=", "0.5"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{"minimum", " ", "bus", " ", "stop", " ", "time", " ", 
-     RowBox[{"(", "min", ")"}]}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"maxbstop", "=", "0.75"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{"maximum", " ", "bus", " ", "stop", " ", "time", " ", 
-     RowBox[{"(", "min", ")"}]}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"minbturnaround", "=", "5"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{"minimum", " ", "bus", " ", "turnaround", " ", "time", " ", 
-     RowBox[{"(", "min", ")"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"hlines", "=", "5"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "number", " ", "of", " ", "grid", " ", "lines", " ", "running", " ", 
+    "horizontally"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"vlines", "=", "7"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "number", " ", "of", " ", "grid", " ", "lines", " ", "running", " ", 
+    "vertically"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"hgap", "=", "0.2"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{"distance", " ", "between", " ", "horizontal", " ", "lines", " ", 
+    RowBox[{"(", "mi", ")"}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"vgap", "=", "0.2"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{"distance", " ", "between", " ", "vertical", " ", "lines", " ", 
+    RowBox[{"(", "mi", ")"}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"jiggle", "=", "0.002"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "random", " ", "displacement", " ", "for", " ", "each", " ", "grid", " ", 
+    "node", " ", 
+    RowBox[{"(", "mi", ")"}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"horizon", "=", "60"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{"total", " ", "time", " ", "horizon", " ", 
+    RowBox[{"(", "min", ")"}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"minbetween", "=", "0"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "minimum", " ", "number", " ", "of", " ", "nodes", " ", "to", " ", "place",
+     " ", "between", " ", "grid", " ", "intersections"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"maxbetween", "=", "2"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "maximum", " ", "number", " ", "of", " ", "nodes", " ", "to", " ", "place",
+     " ", "between", " ", "grid", " ", "intersections"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"wspeed", "=", "0.0455"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{"pedestrian", " ", "walking", " ", "speed", " ", 
+    RowBox[{"(", 
+     RowBox[{"mi", "/", "min"}], ")"}]}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"minbspeed", "=", "0.3"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{"minimum", " ", "bus", " ", "speed", " ", 
+    RowBox[{"(", 
+     RowBox[{"mi", "/", "min"}], ")"}]}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"maxbspeed", "=", "0.5"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{"maximum", " ", "bus", " ", "speed", " ", 
+    RowBox[{"(", 
+     RowBox[{"mi", "/", "min"}], ")"}]}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"minbstop", "=", "0.5"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{"minimum", " ", "bus", " ", "stop", " ", "time", " ", 
+    RowBox[{"(", "min", ")"}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"maxbstop", "=", "0.75"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{"maximum", " ", "bus", " ", "stop", " ", "time", " ", 
+    RowBox[{"(", "min", ")"}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"minbturnaround", "=", "5"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{"minimum", " ", "bus", " ", "turnaround", " ", "time", " ", 
+    RowBox[{"(", "min", ")"}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
    RowBox[{"maxbturnaround", "=", "30"}], ";"}], 
   RowBox[{"(*", " ", 
    RowBox[{"maximum", " ", "bus", " ", "turnaround", " ", "time", " ", 
     RowBox[{"(", "min", ")"}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"facilities", "=", "8"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{"number", " ", "of", " ", "facilities"}], " ", "*)"}], 
-   "\[IndentingNewLine]", 
-   RowBox[{"populations", "=", "16"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{"number", " ", "of", " ", "population", " ", "centers"}], " ", 
-    "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"popspace", "=", "0.2"}], ";", 
-   RowBox[{"(*", " ", 
+   RowBox[{"facilities", "=", "8"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{"number", " ", "of", " ", "facilities"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"populations", "=", "16"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{"number", " ", "of", " ", "population", " ", "centers"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"popspace", "=", "0.2"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "minimum", " ", "required", " ", "spacing", " ", "between", " ", 
+    "population", " ", "centers", " ", 
+    RowBox[{"(", "mi", ")"}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"minpop", "=", "1000"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "minimum", " ", "population", " ", "of", " ", "a", " ", "population", " ", 
+    "center"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"maxpop", "=", "2500"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "maximum", " ", "population", " ", "of", " ", "a", " ", "population", " ", 
+    "center"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"wradius", "=", "0.12"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "distance", " ", "cutoff", " ", "for", " ", "core", " ", "walking", " ", 
+    "arcs", " ", 
+    RowBox[{"(", 
+     RowBox[{"mi", ",", " ", 
+      RowBox[{"measured", " ", "as", " ", "taxicab", " ", "distance"}]}], 
+     ")"}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"wradius2", "=", "0.25"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "distance", " ", "cutoff", " ", "for", " ", "auxiliary", " ", "walking", 
+    " ", "arcs", " ", 
+    RowBox[{"(", 
+     RowBox[{"mi", ",", " ", 
+      RowBox[{"measured", " ", "as", " ", "taxicab", " ", "distance"}]}], 
+     ")"}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"wneighbors", "=", "4"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "maximum", " ", "number", " ", "of", " ", "walking", " ", "neighbors", " ",
+     "to", " ", "allow"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"tripmean", "=", "2"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{"mean", " ", "passenger", " ", "trip", " ", "length", " ", 
+    RowBox[{"(", "min", ")"}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"tripsd", "=", "1.25"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{"mean", " ", "passenger", " ", "trip", " ", "std", " ", "dev", " ", 
+    RowBox[{"(", "min", ")"}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"popfrac", "=", "0.3"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "fraction", " ", "of", " ", "population", " ", "that", " ", "uses", " ", 
+    "public", " ", "transit", " ", "during", " ", "the", " ", "given", " ", 
+    "time", " ", "horizon"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"odjiggle", "=", "2"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "random", " ", "noise", " ", "for", " ", "modeled", " ", "OD", " ", "pair",
+     " ", "travel", " ", "demands"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"odfloor", "=", "1"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"travel", " ", "volume", " ", "threshold"}], ",", " ", 
     RowBox[{
-    "minimum", " ", "required", " ", "spacing", " ", "between", " ", 
-     "population", " ", "centers", " ", 
-     RowBox[{"(", "mi", ")"}]}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"minpop", "=", "1000"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-    "minimum", " ", "population", " ", "of", " ", "a", " ", "population", " ",
-      "center"}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"maxpop", "=", "2500"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-    "maximum", " ", "population", " ", "of", " ", "a", " ", "population", " ",
-      "center"}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"wradius", "=", "0.12"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-    "distance", " ", "cutoff", " ", "for", " ", "core", " ", "walking", " ", 
-     "arcs", " ", 
-     RowBox[{"(", 
-      RowBox[{"mi", ",", " ", 
-       RowBox[{"measured", " ", "as", " ", "taxicab", " ", "distance"}]}], 
-      ")"}]}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"wradius2", "=", "0.25"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-    "distance", " ", "cutoff", " ", "for", " ", "auxiliary", " ", "walking", 
-     " ", "arcs", " ", 
-     RowBox[{"(", 
-      RowBox[{"mi", ",", " ", 
-       RowBox[{"measured", " ", "as", " ", "taxicab", " ", "distance"}]}], 
-      ")"}]}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"wneighbors", "=", "4"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-    "maximum", " ", "number", " ", "of", " ", "walking", " ", "neighbors", 
-     " ", "to", " ", "allow"}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"tripmean", "=", "2"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{"mean", " ", "passenger", " ", "trip", " ", "length", " ", 
-     RowBox[{"(", "min", ")"}]}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"tripsd", "=", "1.25"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-    "mean", " ", "passenger", " ", "trip", " ", "std", " ", "dev", " ", 
-     RowBox[{"(", "min", ")"}]}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"popfrac", "=", "0.3"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-    "fraction", " ", "of", " ", "population", " ", "that", " ", "uses", " ", 
-     "public", " ", "transit", " ", "during", " ", "the", " ", "given", " ", 
-     "time", " ", "horizon"}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"odjiggle", "=", "2"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-    "random", " ", "noise", " ", "for", " ", "modeled", " ", "OD", " ", 
-     "pair", " ", "travel", " ", "demands"}], " ", "*)"}], 
-   "\[IndentingNewLine]", 
-   RowBox[{"odfloor", "=", "1"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-     RowBox[{"travel", " ", "volume", " ", "threshold"}], ",", " ", 
-     RowBox[{
-     "below", " ", "which", " ", "the", " ", "demand", " ", "is", " ", 
-      "ignored"}]}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"bseats", "=", "39"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-    "number", " ", "of", " ", "seats", " ", "on", " ", "each", " ", "bus"}], 
-    " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"bfleet", "=", "100"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-    "number", " ", "of", " ", "vehicles", " ", "present", " ", "in", " ", 
-     "current", " ", "system"}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"bmax", "=", "100"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-    "maximum", " ", "number", " ", "of", " ", "vehicles", " ", "allowed", " ",
-      "in", " ", "problem"}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"linemin", "=", "1"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-    "minimum", " ", "number", " ", "of", " ", "vehicles", " ", "per", " ", 
-     "line"}], " ", "*)"}], "\[IndentingNewLine]", 
-   RowBox[{"linemax", "=", "20"}], ";", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-    "maximum", " ", "number", " ", "of", " ", "vehicles", " ", "per", " ", 
-     "line"}], " ", "*)"}], "\[IndentingNewLine]", 
+    "below", " ", "which", " ", "the", " ", "demand", " ", "is", " ", 
+     "ignored"}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"bseats", "=", "39"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "number", " ", "of", " ", "seats", " ", "on", " ", "each", " ", "bus"}], 
+   " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"bfleet", "=", "100"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "number", " ", "of", " ", "vehicles", " ", "present", " ", "in", " ", 
+    "current", " ", "system"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"bmax", "=", "100"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "maximum", " ", "number", " ", "of", " ", "vehicles", " ", "allowed", " ", 
+    "in", " ", "problem"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"linemin", "=", "1"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "minimum", " ", "number", " ", "of", " ", "vehicles", " ", "per", " ", 
+    "line"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"linemax", "=", "20"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "maximum", " ", "number", " ", "of", " ", "vehicles", " ", "per", " ", 
+    "line"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
    RowBox[{"fare", "=", "2.25"}], ";"}], 
   RowBox[{"(*", " ", 
    RowBox[{"boarding", " ", "fare", " ", 
     RowBox[{"(", "$", ")"}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"objtests", "=", "2"}], ";", 
+  RowBox[{
+   RowBox[{"objtests", "=", "1"}], ";"}], 
   RowBox[{"(*", " ", 
    RowBox[{
    "number", " ", "of", " ", "objective", " ", "topology", " ", "tables", " ",
-     "to", " ", "generate", " ", "as", " ", "a", " ", "test"}], " ", "*)"}], 
-  "\[IndentingNewLine]", 
-  RowBox[{"otjiggle", "=", "1"}], ";", 
+     "to", " ", "generate", " ", "as", " ", "a", " ", "test"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"otjiggle", "=", "4"}], ";"}], 
   RowBox[{"(*", " ", 
    RowBox[{
    "amount", " ", "by", " ", "which", " ", "to", " ", "vary", " ", "each", 
     " ", "fleet", " ", "size", " ", "during", " ", "the", " ", "objective", 
-    " ", "testing"}], " ", "*)"}]}]}], "Input",
+    " ", "testing"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"gravity", "=", "1"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "gravity", " ", "metric", " ", "distance", " ", "falloff", " ", 
+    "parameter"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"omin", "=", "4"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "number", " ", "of", " ", "smallest", " ", "accessibility", " ", "metrics",
+     " ", "to", " ", "incorporate", " ", "into", " ", "the", " ", "objective",
+     " ", "function", " ", "sum"}], " ", "*)"}]}]}], "Input",
  CellChangeTimes->{{3.7807714685817165`*^9, 3.780771469692157*^9}, {
    3.7807722664852037`*^9, 3.7807723285478315`*^9}, {3.7807723622388773`*^9, 
    3.7807724136701546`*^9}, {3.78084871435122*^9, 3.780848790950302*^9}, 
@@ -458,7 +541,12 @@ Cell[BoxData[{
    3.781215050151699*^9, 3.7812152277791834`*^9, {3.7812152606319723`*^9, 
    3.7812152635091543`*^9}, {3.7812153196418*^9, 3.781215335208852*^9}, {
    3.781215390410019*^9, 3.7812153920804825`*^9}, {3.7812177595629854`*^9, 
-   3.7812178587399287`*^9}, 3.7812182499173217`*^9}]
+   3.7812178587399287`*^9}, 3.7812182499173217`*^9, {3.781221281030157*^9, 
+   3.7812212897259045`*^9}, {3.781221335134143*^9, 3.7812213526717744`*^9}, {
+   3.781221494043868*^9, 3.7812215004582353`*^9}, {3.7812218463120584`*^9, 
+   3.7812218476089535`*^9}, {3.7812220266803837`*^9, 3.7812220725488634`*^9}, 
+   3.7812221063527718`*^9, 3.7812223818225613`*^9, 3.7812225156170373`*^9, {
+   3.781222683887783*^9, 3.7812226873382235`*^9}, 3.7812228167200346`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -584,6 +672,85 @@ Cell[BoxData[
          RowBox[{"EdgeWeight", "\[Rule]", 
           RowBox[{"Join", "[", 
            RowBox[{"ac", ",", "anewcost"}], "]"}]}]}], "]"}]}]}], 
+     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "calculate", " ", "objective", " ", "value", " ", "for", " ", "a", " ", 
+     "line", " ", "fleet", " ", "vector"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"obj", "[", "fv_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"hg", ",", "fmet", ",", "pmet"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"hg", "=", 
+        RowBox[{"headwaygraph", "[", "fv", "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{"calculate", " ", "facility", " ", "metrics"}], " ", "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"fmet", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"Sum", "[", 
+           RowBox[{
+            RowBox[{"N", "[", 
+             RowBox[{
+              RowBox[{"pval", "[", 
+               RowBox[{"[", "j", "]"}], "]"}], 
+              SuperscriptBox[
+               RowBox[{"GraphDistance", "[", 
+                RowBox[{"hg", ",", 
+                 RowBox[{"pid", "[", 
+                  RowBox[{"[", "j", "]"}], "]"}], ",", 
+                 RowBox[{"fid", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}]}], "]"}], 
+               RowBox[{"-", "gravity"}]]}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"j", ",", "1", ",", "populations"}], "}"}]}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", "facilities"}], "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{"calculate", " ", "population", " ", "metrics"}], " ", "*)"}],
+        "\[IndentingNewLine]", 
+       RowBox[{"pmet", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"Sum", "[", 
+           RowBox[{
+            RowBox[{"N", "[", 
+             RowBox[{
+              RowBox[{"fval", "[", 
+               RowBox[{"[", "j", "]"}], "]"}], 
+              RowBox[{
+               SuperscriptBox[
+                RowBox[{"GraphDistance", "[", 
+                 RowBox[{"hg", ",", 
+                  RowBox[{"fid", "[", 
+                   RowBox[{"[", "j", "]"}], "]"}], ",", 
+                  RowBox[{"pid", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}]}], "]"}], 
+                RowBox[{"-", "gravity"}]], "/", 
+               RowBox[{"fmet", "[", 
+                RowBox[{"[", "j", "]"}], "]"}]}]}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"j", ",", "1", ",", "facilities"}], "}"}]}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", "populations"}], "}"}]}], "]"}]}], ";",
+        "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+        "output", " ", "negative", " ", "of", " ", "sum", " ", "of", " ", 
+         "smallest", " ", "few", " ", "metrics"}], " ", "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"-", 
+        RowBox[{"Total", "[", 
+         RowBox[{"TakeSmallest", "[", 
+          RowBox[{"pmet", ",", "omin"}], "]"}], "]"}]}]}]}], 
      "\[IndentingNewLine]", "]"}]}]}]}]], "Input",
  CellChangeTimes->{{3.7809609812489176`*^9, 3.7809610158078156`*^9}, {
   3.7812160888971586`*^9, 3.7812160965841017`*^9}, {3.7812161377517896`*^9, 
@@ -593,7 +760,9 @@ Cell[BoxData[
   3.7812173628764753`*^9, 3.781217364455101*^9}, {3.781217454098124*^9, 
   3.78121753432751*^9}, {3.7812175962315483`*^9, 3.7812176465851917`*^9}, {
   3.781217705740122*^9, 3.7812177108777266`*^9}, {3.7812186305796075`*^9, 
-  3.781218643516287*^9}}],
+  3.781218643516287*^9}, {3.781221905643876*^9, 3.781222005927905*^9}, {
+  3.7812221183646307`*^9, 3.781222217512882*^9}, {3.781222258280546*^9, 
+  3.7812222880344963`*^9}}],
 
 Cell[" ", "Text",
  Editable->False,
@@ -747,30 +916,31 @@ Cell[BoxData[
      "arc"}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"aboard", "=", 
-     RowBox[{"{", "}"}]}], ";", 
-    RowBox[{"(*", " ", 
-     RowBox[{
-     "list", " ", "of", " ", "lists", " ", "of", " ", "boarding", " ", "arc", 
-      " ", "IDs", " ", "for", " ", "each", " ", "transit", " ", "line"}], " ",
-      "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"{", "}"}]}], ";"}], 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "list", " ", "of", " ", "lists", " ", "of", " ", "boarding", " ", "arc", 
+     " ", "IDs", " ", "for", " ", "each", " ", "transit", " ", "line"}], " ", 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
     RowBox[{"linecost", "=", 
-     RowBox[{"{", "}"}]}], ";", 
-    RowBox[{"(*", " ", 
-     RowBox[{
-     "list", " ", "of", " ", "total", " ", "travel", " ", "times", " ", "for",
-       " ", "each", " ", "line"}], " ", "*)"}], "\[IndentingNewLine]", 
-    "\[IndentingNewLine]", 
-    RowBox[{"Print", "[", 
-     RowBox[{"\"\<Dimensions (mi): \>\"", "<>", 
-      RowBox[{"ToString", "[", 
-       RowBox[{
-        RowBox[{"(", 
-         RowBox[{"hlines", "-", "1"}], ")"}], " ", "hgap"}], "]"}], "<>", 
-      "\"\< \[Times] \>\"", "<>", 
-      RowBox[{"ToString", "[", 
-       RowBox[{
-        RowBox[{"(", 
-         RowBox[{"vlines", "-", "1"}], ")"}], " ", "vgap"}], "]"}]}], "]"}]}], 
+     RowBox[{"{", "}"}]}], ";"}], 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "list", " ", "of", " ", "total", " ", "travel", " ", "times", " ", "for", 
+     " ", "each", " ", "line"}], " ", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Dimensions (mi): \>\"", "<>", 
+     RowBox[{"ToString", "[", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"hlines", "-", "1"}], ")"}], " ", "hgap"}], "]"}], "<>", 
+     "\"\< \[Times] \>\"", "<>", 
+     RowBox[{"ToString", "[", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"vlines", "-", "1"}], ")"}], " ", "vgap"}], "]"}]}], "]"}], 
    RowBox[{"(*", " ", 
     RowBox[{"display", " ", "dimensions", " ", "of", " ", "network"}], " ", 
     "*)"}], "\[IndentingNewLine]", 
@@ -3661,41 +3831,16 @@ Ideally we would like to see a rough response.\
 Cell[BoxData[
  RowBox[{
   RowBox[{"(*", " ", 
-   RowBox[{"Initialize", " ", "data", " ", "structures"}], " ", "*)"}], 
+   RowBox[{"Main", " ", "testing", " ", "loop"}], " ", "*)"}], 
   "\[IndentingNewLine]", 
   RowBox[{
-   RowBox[{
-    RowBox[{"pfdist", "=", 
-     RowBox[{"ConstantArray", "[", 
-      RowBox[{"0", ",", 
-       RowBox[{"{", 
-        RowBox[{"populations", ",", "facilities"}], "}"}]}], "]"}]}], ";"}], 
-   RowBox[{"(*", " ", 
-    RowBox[{
-    "graph", " ", "distance", " ", "from", " ", "each", " ", "population", 
-     " ", "center", " ", "to", " ", "each", " ", "facility"}], " ", "*)"}], 
-   "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"fpdist", "=", 
-     RowBox[{"ConstantArray", "[", 
-      RowBox[{"0", ",", 
-       RowBox[{"{", 
-        RowBox[{"facilities", ",", "populations"}], "}"}]}], "]"}]}], ";"}], 
-   RowBox[{"(*", " ", 
-    RowBox[{
-    "graph", " ", "distance", " ", "from", " ", "each", " ", "facility", " ", 
-     "to", " ", "each", " ", "population", " ", "center"}], " ", "*)"}], 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", 
-   RowBox[{"(*", " ", 
-    RowBox[{"Main", " ", "testing", " ", "loop"}], " ", "*)"}], 
-   "\[IndentingNewLine]", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
       RowBox[{
        RowBox[{"out", "=", 
         RowBox[{"{", "}"}]}], ",", "mat", ",", "line1", ",", "line2", ",", 
-       "lb1", ",", "ub1", ",", "lb2", ",", "ub2"}], "}"}], ",", 
+       "lb1", ",", "ub1", ",", "lb2", ",", "ub2", ",", "fleet"}], "}"}], ",", 
      "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{"Do", "[", "\[IndentingNewLine]", 
@@ -3759,19 +3904,59 @@ Cell[BoxData[
           RowBox[{"ConstantArray", "[", 
            RowBox[{"0", ",", 
             RowBox[{"{", 
-             RowBox[{
-              RowBox[{
-               RowBox[{"linefleet", "[", 
-                RowBox[{"[", "line1", "]"}], "]"}], "+", "otjiggle"}], ",", 
-              RowBox[{
-               RowBox[{"linefleet", "[", 
-                RowBox[{"[", "line2", "]"}], "]"}], "+", "otjiggle"}]}], 
-             "}"}]}], "]"}]}], ";", 
+             RowBox[{"ub1", ",", "ub2"}], "}"}]}], "]"}]}], ";", 
          RowBox[{"(*", " ", 
           RowBox[{"initialize", " ", "result", " ", "table"}], " ", "*)"}], 
-         "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-         "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-         "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{"fleet", " ", "size", " ", "variation", " ", "loop"}], " ", 
+          "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"Do", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Do", "[", "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{
+             "define", " ", "temporary", " ", "fleet", " ", "vector"}], " ", 
+             "*)"}], "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"fleet", "=", "linefleet"}], ";", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"fleet", "[", 
+                RowBox[{"[", "line1", "]"}], "]"}], "=", "f1"}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"fleet", "[", 
+                RowBox[{"[", "line2", "]"}], "]"}], "=", "f2"}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"(*", " ", 
+               RowBox[{"evaluate", " ", "objective"}], " ", "*)"}], 
+              "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"mat", "[", 
+                RowBox[{"[", 
+                 RowBox[{"f1", ",", "f2"}], "]"}], "]"}], "=", 
+               RowBox[{"obj", "[", "fleet", "]"}]}]}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"f2", ",", "lb2", ",", "ub2"}], "}"}]}], "]"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"{", 
+            RowBox[{"f1", ",", "lb1", ",", "ub1"}], "}"}]}], "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+          "normalize", " ", "results", " ", "and", " ", "generate", " ", 
+           "plot"}], " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"mat", "-=", 
+          RowBox[{"Min", "[", 
+           RowBox[{"Flatten", "[", "mat", "]"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"mat", "=", 
+          RowBox[{"N", "[", 
+           RowBox[{"mat", "/", 
+            RowBox[{"Max", "[", 
+             RowBox[{"Flatten", "[", "mat", "]"}], "]"}]}], "]"}]}], ";", 
          "\[IndentingNewLine]", 
          RowBox[{"out", "=", 
           RowBox[{"Append", "[", 
@@ -3792,40 +3977,21 @@ Cell[BoxData[
                 RowBox[{"ToString", "[", "line1", "]"}], "<>", "\"\< (\>\"", "<>", 
                 RowBox[{"ToString", "[", "lb1", "]"}], "<>", "\"\<-\>\"", "<>", 
                 RowBox[{"ToString", "[", "ub1", "]"}], "<>", 
-                "\"\<)\>\""}]}]}], "]"}]}], "]"}]}], ";"}], 
-        "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+                "\"\<)\>\""}]}]}], "]"}]}], "]"}]}]}], ",", 
+        "\[IndentingNewLine]", 
         RowBox[{"{", 
          RowBox[{"main", ",", "1", ",", "objtests"}], "}"}]}], "]"}], ";", 
-      "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-      "\[IndentingNewLine]", "\[IndentingNewLine]", "out"}]}], 
-    "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
-   "\[IndentingNewLine]", 
-   RowBox[{"(*", 
-    RowBox[{
-     RowBox[{"**", " ", "module"}], " ", "to", " ", "build", " ", "a", " ", 
-     "temporary", " ", "graph", " ", "with", " ", "a", " ", "temporary", " ", 
-     "anewcost", " ", "vector", " ", "based", " ", "on", " ", "the", " ", 
-     "new", " ", "frequencies"}], " ", "***)"}], "\[IndentingNewLine]", 
-   RowBox[{"(*", 
-    RowBox[{
-     RowBox[{
-      RowBox[{"**", " ", "fleet"}], " ", "=", " ", 
-      RowBox[{"freq", " ", "*", " ", "circuit"}]}], ",", " ", 
-     RowBox[{
-      RowBox[{"so", " ", 
-       RowBox[{"fleet", "/", "circuit"}]}], " ", "=", " ", "freq"}], ",", " ", 
-     RowBox[{
-      RowBox[{"so", " ", 
-       RowBox[{"circuit", "/", "fleet"}]}], " ", "=", " ", "headway"}]}], " ",
-     "***)"}], "\[IndentingNewLine]"}]}]], "Input",
- CellChangeTimes->{{3.7809625730064435`*^9, 3.780962574977812*^9}, {
-  3.781038286038891*^9, 3.78103832154051*^9}, {3.7812157190165005`*^9, 
-  3.781215830160632*^9}, {3.781216007981928*^9, 3.7812160329489403`*^9}, {
-  3.7812161461561327`*^9, 3.781216176812076*^9}, {3.781217868632139*^9, 
-  3.7812179736169543`*^9}, {3.781218041656704*^9, 3.7812181473344574`*^9}, {
-  3.7812181848820167`*^9, 3.781218241165017*^9}, {3.781218278691636*^9, 
-  3.781218288112831*^9}, {3.7812183436378593`*^9, 3.781218609803754*^9}, {
-  3.7812186614232254`*^9, 3.7812187711453667`*^9}}]
+      "\[IndentingNewLine]", "out"}]}], "\[IndentingNewLine]", "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQA2IQfdJkgeJc7TeONl73wfQMu4OSh4D0HW9DORCt0/5g
+j4TOG8dnykdPgegv2f8fgOgdsXJPQDTXf5dPILr9j+Q3EF1jNeWkJJAW37f5
+GojewWx6H0Q/2Jz1BkRXW8p8BNGX3FV/gOhHitf+gOiAOcz/QHRE5hcWKSAd
+tcNSDUQLdK/VAdE3lqVYgehvyXfkpEHyTVftQXTO7iwvEF3RtTQMRFc6XowG
+0ad+zY8D0aIh6zJBdIsrUzGIfnbjWD2IfsX+YB2ILjVfshVET8+p3g6iv++N
+2Q+il36qPAiiNRa8+AKid1XwM8oAac2glawgesPKIB4QHaSzUwxEO3FfkAfR
+EjYvVUB0W/s7MA0AJyidoQ==
+  "]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4255,7 +4421,7 @@ X4FoAN/Ir3o=
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{758, 833},
+WindowSize->{757, 833},
 WindowMargins->{{90, Automatic}, {Automatic, 60}},
 FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (April 11, 2016)",
 StyleDefinitions->"Default.nb"
@@ -4308,42 +4474,42 @@ Cell[9256, 204, 620, 9, 41, "SubitemNumbered"]
 Cell[CellGroupData[{
 Cell[9937, 220, 99, 1, 63, "Section"],
 Cell[10039, 223, 273, 5, 49, "Text"],
-Cell[10315, 230, 11159, 230, 872, "Input"]
+Cell[10315, 230, 12829, 318, 932, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21511, 465, 96, 1, 63, "Section"],
-Cell[21610, 468, 187, 4, 30, "Text"],
-Cell[21800, 474, 4765, 121, 360, "Input"],
-Cell[26568, 597, 273, 9, 5, "Text"]
+Cell[23181, 553, 96, 1, 63, "Section"],
+Cell[23280, 556, 187, 4, 30, "Text"],
+Cell[23470, 562, 8014, 202, 641, "Input"],
+Cell[31487, 766, 273, 9, 5, "Text"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[26890, 612, 94, 1, 64, "Chapter"],
-Cell[26987, 615, 328, 6, 49, "Text"],
+Cell[31809, 781, 94, 1, 64, "Chapter"],
+Cell[31906, 784, 328, 6, 49, "Text"],
 Cell[CellGroupData[{
-Cell[27340, 625, 160, 2, 63, "Section"],
-Cell[27503, 629, 340, 6, 49, "Text"],
-Cell[27846, 637, 63456, 1471, 5670, "Input"]
+Cell[32259, 794, 160, 2, 63, "Section"],
+Cell[32422, 798, 340, 6, 49, "Text"],
+Cell[32765, 806, 63449, 1472, 5750, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[91339, 2113, 174, 2, 63, "Section"],
-Cell[91516, 2117, 220, 4, 49, "Text"],
-Cell[91739, 2123, 32138, 752, 3252, "Input"]
+Cell[96251, 2283, 174, 2, 63, "Section"],
+Cell[96428, 2287, 220, 4, 49, "Text"],
+Cell[96651, 2293, 32138, 752, 3292, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[123914, 2880, 115, 1, 63, "Section"],
-Cell[124032, 2883, 260, 5, 49, "Text"],
-Cell[124295, 2890, 30888, 754, 2906, "Input"]
+Cell[128826, 3050, 115, 1, 63, "Section"],
+Cell[128944, 3053, 260, 5, 49, "Text"],
+Cell[129207, 3060, 30888, 754, 2906, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[155220, 3649, 105, 1, 63, "Section"],
-Cell[155328, 3652, 367, 6, 68, "Text"],
-Cell[155698, 3660, 7281, 167, 1012, "Input"]
+Cell[160132, 3819, 105, 1, 63, "Section"],
+Cell[160240, 3822, 367, 6, 68, "Text"],
+Cell[160610, 3830, 6893, 163, 772, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[163016, 3832, 100, 1, 63, "Section"],
-Cell[163119, 3835, 321, 5, 49, "Text"],
-Cell[163443, 3842, 17031, 411, 1752, "Input"]
+Cell[167540, 3998, 100, 1, 63, "Section"],
+Cell[167643, 4001, 321, 5, 49, "Text"],
+Cell[167967, 4008, 17031, 411, 1752, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
