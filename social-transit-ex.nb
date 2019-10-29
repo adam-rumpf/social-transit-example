@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    186339,       4478]
-NotebookOptionsPosition[    183688,       4391]
-NotebookOutlinePosition[    184031,       4406]
-CellTagsIndexPosition[    183988,       4403]
+NotebookDataLength[    186435,       4480]
+NotebookOptionsPosition[    183784,       4393]
+NotebookOutlinePosition[    184127,       4408]
+CellTagsIndexPosition[    184084,       4405]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -4045,12 +4045,14 @@ Cell[BoxData[
                RowBox[{"Length", "[", "arcs", "]"}], "+", "i", "-", "1"}], 
               ",", "4", ",", 
               RowBox[{"-", "1"}], ",", 
-              RowBox[{"anew", "[", 
-               RowBox[{"[", 
-                RowBox[{"i", ",", "1"}], "]"}], "]"}], ",", 
-              RowBox[{"anew", "[", 
-               RowBox[{"[", 
-                RowBox[{"i", ",", "2"}], "]"}], "]"}], ",", 
+              RowBox[{
+               RowBox[{"anew", "[", 
+                RowBox[{"[", 
+                 RowBox[{"i", ",", "1"}], "]"}], "]"}], "-", "1"}], ",", 
+              RowBox[{
+               RowBox[{"anew", "[", 
+                RowBox[{"[", 
+                 RowBox[{"i", ",", "2"}], "]"}], "]"}], "-", "1"}], ",", 
               RowBox[{"anewcost", "[", 
                RowBox[{"[", "i", "]"}], "]"}]}], "}"}]}], "]"}]}], ",", 
          "\[IndentingNewLine]", 
@@ -4378,13 +4380,13 @@ Cell[BoxData[
         "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], 
    "\[IndentingNewLine]"}]}]], "Input",
  CellChangeTimes->CompressedData["
-1:eJxTTMoPSmViYGAQB2IQnZGhrDNX+42jiWgqmFYo1sjYC6RdF//OBdHrbKcU
+1:eJxTTMoPSmViYGCQAGIQnZGhrDNX+42jiWgqmFYo1sjYC6RdF//OBdHrbKcU
 gWj/3n9g+uyD+HIQ/VfoeCWI3rxgazOINmdJbgXRVTvl+kC0+67708DqFTbP
 BtEsQu7zQTRb7a8VIHqFBtMhEH3jkNJJMN818SyIztC7dRdEV6w99xBEr2J9
 8xxE++zseQeiIw5uZd4HpO/UMImC6BnMZ2VB9KaGeCUQzWa2RBdET1svpAei
 GfIyjEB0wdl+MG1Qf/LzfiDN4REkdABI98WmS4Joo4NN6iCaZek2QxBt+2C6
 OYjOmfE7AER7WTGHg+ht1SFnQfQsLf8LINqMz/IKiO6tugWmy36oPgTRBpE/
-X4FowYa1Ek46bxwPlm8E0wAO27YI
+X4FowYa1Ek46bxwPlm8E00bap4+5AGmb41rHQTQArMe9JQ==
   "]]
 }, Open  ]]
 }, Open  ]]
@@ -4477,7 +4479,7 @@ Cell[159219, 3797, 6893, 163, 772, "Input"]
 Cell[CellGroupData[{
 Cell[166149, 3965, 100, 1, 63, "Section"],
 Cell[166252, 3968, 321, 5, 49, "Text"],
-Cell[166576, 3975, 17084, 412, 1752, "Input"]
+Cell[166576, 3975, 17180, 414, 1752, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
