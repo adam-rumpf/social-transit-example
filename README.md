@@ -23,3 +23,7 @@ See `format.txt` for a full description of the output file format. In particular
 * `od_data.txt`: unique ID, origin node ID, destination node ID, travel volume
 * `transit_data.txt`: line ID, line name, vehicle type, initial fleet size, total circuit time, scaling factor, fleet lower bound, fleet upper bound, boarding fare, initial line frequency, initial line capacity
 * `vehicle_data.txt`: vehicle type ID, vehicle type name, vehicle type bound, vehicle type capacity, vehicle operating cost
+
+## User Cost Search
+
+Also included in this repository is a modified version of the main tabu search/simulated annealing solution algorithm from [social-transit-solver](https://github.com/adam-rumpf/social-transit-solver). It has been modified to optimize the user cost rather than the social access objective, while ignoring the user cost constraint. This can be used to further refine the initial solution vector produced by the Mathematica script by modifying the initial fleet sizes to achieve lower user costs.
