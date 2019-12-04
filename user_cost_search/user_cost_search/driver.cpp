@@ -31,5 +31,6 @@ int main()
 	// Delete solver to automate shutdown process
 	delete Solver;
 
+	cin.get();
 	return SUCCESSFUL_EXIT;
 }

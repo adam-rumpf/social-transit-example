@@ -36,23 +36,12 @@ Constraint::Constraint(Network * net_in)
 			string value = piece;
 
 			// Expected data
-			if (count == 1)
-				initial_user_cost = stod(value);
-			if (count == 2)
-				uc_percent_increase = stod(value);
 			if (count == 4)
 				riding_weight = stod(value);
 			if (count == 5)
 				walking_weight = stod(value);
 			if (count == 6)
 				waiting_weight = stod(value);
-
-			// Handle the event of an unspecified initial user cost
-			if (initial_user_cost < 0)
-			{
-				cout << "User cost data file is missing an initial user cost value." << endl;
-				exit(INCORRECT_FILE);
-			}
 		}
 
 		us_file.close();
@@ -60,6 +49,7 @@ Constraint::Constraint(Network * net_in)
 	else
 	{
 		cout << "Constraint file failed to open." << endl;
+		cin.get();
 		exit(FILE_NOT_FOUND);
 	}
 }

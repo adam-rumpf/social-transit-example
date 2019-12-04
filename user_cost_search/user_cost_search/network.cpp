@@ -28,6 +28,7 @@ Network::Network()
 	else
 	{
 		cout << "Problem file failed to open." << endl;
+		cin.get();
 		exit(FILE_NOT_FOUND);
 	}
 
@@ -85,6 +86,7 @@ Network::Network()
 	else
 	{
 		cout << "Node file failed to open." << endl;
+		cin.get();
 		exit(FILE_NOT_FOUND);
 	}
 
@@ -125,6 +127,7 @@ Network::Network()
 	else
 	{
 		cout << "Vehicle file failed to open." << endl;
+		cin.get();
 		exit(FILE_NOT_FOUND);
 	}
 
@@ -179,6 +182,7 @@ Network::Network()
 	else
 	{
 		cout << "Transit file failed to open." << endl;
+		cin.get();
 		exit(FILE_NOT_FOUND);
 	}
 
@@ -251,6 +255,7 @@ Network::Network()
 	else
 	{
 		cout << "Arc file failed to open." << endl;
+		cin.get();
 		exit(FILE_NOT_FOUND);
 	}
 
@@ -291,6 +296,7 @@ Network::Network()
 	else
 	{
 		cout << "OD file failed to open." << endl;
+		cin.get();
 		exit(FILE_NOT_FOUND);
 	}
 }

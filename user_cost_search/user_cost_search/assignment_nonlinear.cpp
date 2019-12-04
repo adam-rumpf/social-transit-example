@@ -55,6 +55,7 @@ NonlinearAssignment::NonlinearAssignment(Network * net_in)
 	else
 	{
 		cout << "Assignment file failed to open." << endl;
+		cin.get();
 		exit(FILE_NOT_FOUND);
 	}
 }

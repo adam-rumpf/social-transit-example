@@ -33,6 +33,7 @@ Search::Search()
 			{
 				getline(stream, piece, '\t'); // ID
 				getline(stream, piece, '\t'); // Name
+				getline(stream, piece, '\t'); // Type
 				getline(stream, piece, '\t'); // Fleet
 				fleet = stoi(piece);
 				getline(stream, piece, '\t'); // Circuit
@@ -51,6 +52,7 @@ Search::Search()
 	else
 	{
 		cout << "Transit file failed to open." << endl;
+		cin.get();
 		exit(FILE_NOT_FOUND);
 	}
 
@@ -232,7 +234,9 @@ Each iteration of the search moves to the neighbor with the best objective value
 void Search::exhaustive_search()
 {
 	// Find best neighbor
+	cout << "\n---------- Exhaustive Search Iteration 0 ----------\n" << endl;
 	pair<pair<int, int>, double> move = best_neighbor();
+	cout << "Making move (" << move.first.first << ',' << move.first.second << ')' << endl;
 
 	// Continue main loop until reaching local optimality
 	while (move.second < INFINITY)
@@ -241,8 +245,10 @@ void Search::exhaustive_search()
 
 		exhaustive_iteration++;
 		cout << "\n---------- Exhaustive Search Iteration " << exhaustive_iteration << " ----------\n" << endl;
+		cout << "Current user cost: " << obj_current << endl;
 
 		// Make local move and update objective and vehicle usage
+		cout << "Making move (" << move.first.first << ',' << move.first.second << ')' << endl;
 		sol_current = make_move(move.first.first, move.first.second);
 		obj_current = move.second;
 		vehicle_totals();
