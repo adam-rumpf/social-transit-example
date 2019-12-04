@@ -36,13 +36,8 @@ typedef priority_queue<tuple<double, pair<int, int>, bool>, vector<tuple<double,
 typedef priority_queue<pair<double, pair<int, int>>, vector<pair<double, pair<int, int>>>, greater<pair<double, pair<int, int>>>> neighbor_queue; // min-priority queue for storing objective/move pairs at the end of the neighborhood search
 
 // Global function prototypes
-pair<vector<int>, double> get_initial_solution(); // returns the initial solution vector and objective value
 string vec2str(const vector<int> &); // returns string version of integer vector
 vector<int> str2vec(string); // returns an integer vector for a given solution string
-
-// Structure declarations
-struct Search;
-struct SolutionLog;
 
 /**
 Search object.
@@ -54,45 +49,20 @@ struct Search
 	// Public attributes (object pointers)
 	Network * Net; // pointer to main network object
 	Constraint * Con; // pointer to main constraint object
-	SolutionLog * SolLog; // pointer to solution log object
 
 	// Public attributes (search parameters and technical)
-	bool started = false; // whether or not the solve() method has been called
-	bool keyboard_halt = false; // whether or not to stop due to a keyboard halt
-	bool pickup; // whether or not to continue a search from its saved data files (if false, log files are wiped clean)
-	bool exhaustive; // whether or not to end with an exhaustive search from the final solution
 	int sol_size; // size of solution vector
-	int max_iterations; // maximum number of search iterations
-	double temp_factor; // simulated annealing decay factor
-	int attractive_max; // number of attractive solutions to store for tabu search
-	int nbhd_add_lim1; // ADD moves to collect in first pass of neighborhood search
-	int nbhd_add_lim2; // ADD moves to keep in second pass of neighborhood search
-	int nbhd_drop_lim1; // DROP moves to collect in first pass of neighborhood search
-	int nbhd_drop_lim2; // DROP moves to keep in second pass of neighborhood search
-	int nbhd_swap_lim; // SWAP moves to keep in neighborhood search
-	double tenure_init; // initial tabu tenure
-	double tenure_factor; // tabu tenure multiplicative factor
-	int nonimp_in_max; // cutoff for inner nonimprovement counter
-	int nonimp_out_max; // cutoff for outer nonimprovement counter
-	int step; // step size for moves
+	int step = 1; // step size for moves
 	vector<int> line_min; // lower vehicle bounds for all lines
 	vector<int> line_max; // upper vehicle bounds for all lines
 	vector<int> max_vehicles; // maximum number of each vehicle type
 	vector<int> vehicle_type; // vector of vehicle types for each line
 
 	// Public attributes (solution algorithm memory)
-	vector<double> add_tenure; // vector of tabu tenures for ADD moves to each solution vector element
-	vector<double> drop_tenure; // vector of tabu tenures for DROP moves to each solution vector element
 	vector<int> sol_current; // current solution vector
 	vector<int> sol_best; // best known solution vector
 	double obj_current; // current objective value
 	double obj_best; // best known objective value
-	int iteration; // current iteration number
-	int nonimp_in; // inner nonimprovement counter
-	int nonimp_out; // outer nonimprovement counter
-	double tenure; // tabu tenure for newly-added tabu moves
-	double temperature; // simulated annealing temperature
-	list<pair<vector<int>, double>> attractive_solutions; // list of attractive solutions, stored as solution vector/objective value pairs
 	vector<int> current_vehicles; // number of each vehicle type currently in use
 	int exhaustive_iteration; // iteration of exhaustive local search
 
@@ -100,46 +70,9 @@ struct Search
 	Search(); // constructor initializes network, objective, constraint, and various logger objects
 	~Search(); // destructor deletes network, objective, and constraint objects
 	void solve(); // main driver of the solution algorithm
-	neighbor_pair neighborhood_search(); // performs a neighborhood search to find the best and second best neighboring moves
 	vector<int> make_move(int, int); // returns the results of applying a move to the current solution
-	void pop_attractive(bool); // deletes a random attractive solution and optionally sets it as the current solution
 	void vehicle_totals(); // calculates total vehicles of each type in use
-	void increase_tenure(); // increase the tabu tenure value
-	void cool_temperature(); // apply a cooling schedule to the simulated annealing temperature
 	void save_data(); // writes all current progress to the log files
 	pair<pair<int, int>, double> best_neighbor(); // finds the best move from the current solution via exhaustive neighborhood search
 	void exhaustive_search(); // conducts an exhaustive local search from the current solution
-};
-
-/**
-Solution logger.
-
-Records information about every solution encountered during the search process. This allows us to simply look up previously-generated solutions instead of having to reevaluate the objective and constraint functions.
-
-Includes methods for reading from and writing to the solution log input and output files.
-
-Due to the structure of the main solver's neighborhood search, we may occasionally generate the objective function value but not the constraint function value for a logged solution. For this reason, some rows in the solution log may be incomplete, but may be filled in later if the constraint function value is needed. Several of the methods of this class revolve around looking up or filling in pieces of information about solutions.
-
-The most important attribute of this class is the solution log, which is an unordered map of solutions. The log is indexed by the string version of the corresponding solution vector. The entry in the log is a 5-part tuple consisting of the following:
-	<0> the feasibility result
-	<1> a vector of constraint function elements
-	<2> the constraint evaluation time
-	<3> the objective value
-	<4> the objective evaluation time
-*/
-struct SolutionLog
-{
-	// Public attributes
-	unordered_map<string, tuple<int, vector<double>, double, double, double>> sol_log; // dictionary of solutions, indexed by the string version of the solution vector
-
-	// Public methods
-	SolutionLog(bool); // constructor reads the solution log file and initializes the solution memory structure
-	void load_solution(string); // reads a given solution log into the dictionary
-	void save_solution(); // writes the current solution log to the log file
-	void create_row(const vector<int> &, int, const vector<double> &, double, double, double); // creates or updates a solution log entry for a given solution vector with given information
-	void create_partial_row(const vector<int> &, double, double); // creates a solution log entry for a given solution with only a known objective value and calculation time
-	bool solution_exists(const vector<int> &); // determines whether a given solution vector is present in the solution log
-	tuple<int, vector<double>, double> lookup_row(const vector<int> &); // retrieves feasibility status, constraint function elements, and objective value of a given solution
-	pair<int, double> lookup_row_quick(const vector<int> &); // retrieves feasibility status and objective value of a given solution
-	void update_row(const vector<int> &, int, const vector<double> &, double); // modifies the feasibility status, constraints, and constraint time for a logged solution
 };
