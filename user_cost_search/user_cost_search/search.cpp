@@ -9,6 +9,55 @@ Search::Search()
 	Con = new Constraint(Net); // constraint function object
 	sol_size = Net->lines.size(); // get solution vector size
 	srand(time(NULL)); // seed random number generator
+
+	// Read initial fleet sizes from transit file
+	ifstream transit_file;
+	transit_file.open(FILE_BASE + TRANSIT_FILE);
+	if (transit_file.is_open())
+	{
+		string line, piece; // whole line and line element being read
+		getline(transit_file, line); // skip comment line
+
+		while (transit_file.eof() == false)
+		{
+			// Get whole line as a string stream
+			getline(transit_file, line);
+			if (line.size() == 0)
+				// Break for blank line at file end
+				break;
+			stringstream stream(line);
+
+			// Go through each piece of the line
+			int fleet;
+			try
+			{
+				getline(stream, piece, '\t'); // ID
+				getline(stream, piece, '\t'); // Name
+				getline(stream, piece, '\t'); // Fleet
+				fleet = stoi(piece);
+				getline(stream, piece, '\t'); // Circuit
+				getline(stream, piece, '\t'); // Scaling
+				getline(stream, piece, '\t'); // LB
+				getline(stream, piece, '\t'); // UB
+			}
+			catch (out_of_range &e) {};
+
+			// Add fleet size to solution vector
+			sol_current.push_back(fleet);
+		}
+
+		transit_file.close();
+	}
+	else
+	{
+		cout << "Transit file failed to open." << endl;
+		exit(FILE_NOT_FOUND);
+	}
+
+	// Set best and initial objectives
+	sol_best = sol_current;
+	obj_current = INFINITY;
+	obj_best = INFINITY;
 }
 
 /// Search destructor deletes Network, Objective, and Constraint objects created by the constructor.
@@ -21,13 +70,6 @@ Search::~Search()
 /// Main driver of the solution algorithm. Calls main search loop and handles final output.
 void Search::solve()
 {
-	// Initialize neighborhood search solution container and set references to its elements
-	neighbor_pair nbhd_sol;
-	pair<int, int> & nbhd_sol1 = nbhd_sol.first.first;
-	pair<int, int> & nbhd_sol2 = nbhd_sol.second.first;
-	double & nbhd_obj1 = nbhd_sol.first.second;
-	double & nbhd_obj2 = nbhd_sol.second.second;
-
 	// Determine total vehicle bounds
 	max_vehicles.resize(Net->vehicles.size());
 	for (int i = 0; i < Net->vehicles.size(); i++)
@@ -63,6 +105,8 @@ void Search::solve()
 
 	// Initialize local search method
 	exhaustive_search();
+	sol_best = sol_current;
+	obj_best = obj_current;
 
 	// Perform final saves after search completes
 	save_data();
@@ -98,13 +142,6 @@ void Search::vehicle_totals()
 		current_vehicles[vehicle_type[i]] += sol_current[i];
 }
 
-/// Writes current memory structures to the output logs.
-void Search::save_data()
-{
-	MemLog->save_memory();
-	SolLog->save_solution();
-}
-
 /**
 Finds the absolute best neighbor of the current solution.
 
@@ -137,24 +174,12 @@ pair<pair<int, int>, double> Search::best_neighbor()
 		// Calculate its objective and create a tentative log entry
 		feas = FEAS_UNKNOWN;
 		clock_t start = clock(); // objective calculation timer
-		obj_candidate = Obj->calculate(sol_candidate); // calculate objective value
+		obj_candidate = Con->calculate(sol_candidate); // calculate objective value
 		double candidate_time = (1.0*clock() - start) / CLOCKS_PER_SEC; // objective calculation time
 
 		// Filter out moves that do not improve on the current solution or best known neighbor
 		if ((obj_candidate >= obj_current) || (obj_candidate >= top_objective))
 			continue;
-
-		// Evaluate the feasibility of the candidate solution
-		if (feas == FEAS_UNKNOWN)
-		{
-			// If feasibility is unknown, calculate its constraints and create a full log entry
-			clock_t start = clock(); // constraint calculation timer
-			pair<int, vector<double>> con_candidate = Con->calculate(sol_candidate); // calculate feasibility status and constraint vector
-			double candidate_time = (1.0*clock() - start) / CLOCKS_PER_SEC; // constraint calculation time
-			if (con_candidate.first == FEAS_FALSE)
-				// Skip candidate if discovered to be infeasible
-				continue;
-		}
 
 		// If we've made it this far, the candidate should be kept
 		top_move = make_pair(choice, NO_ID);
@@ -181,24 +206,12 @@ pair<pair<int, int>, double> Search::best_neighbor()
 		// Calculate its objective and create a tentative log entry
 		feas = FEAS_UNKNOWN;
 		clock_t start = clock(); // objective calculation timer
-		obj_candidate = Obj->calculate(sol_candidate); // calculate objective value
+		obj_candidate = Con->calculate(sol_candidate); // calculate objective value
 		double candidate_time = (1.0*clock() - start) / CLOCKS_PER_SEC; // objective calculation time
 
 		// Filter out moves that do not improve on the current solution or best known neighbor
 		if ((obj_candidate >= obj_current) || (obj_candidate >= top_objective))
 			continue;
-
-		// Evaluate the feasibility of the candidate solution
-		if (feas == FEAS_UNKNOWN)
-		{
-			// If feasibility is unknown, calculate its constraints and create a full log entry
-			clock_t start = clock(); // constraint calculation timer
-			pair<int, vector<double>> con_candidate = Con->calculate(sol_candidate); // calculate feasibility status and constraint vector
-			double candidate_time = (1.0*clock() - start) / CLOCKS_PER_SEC; // constraint calculation time
-			if (con_candidate.first == FEAS_FALSE)
-				// Skip candidate if discovered to be infeasible
-				continue;
-		}
 
 		// If we've made it this far, the candidate should be kept
 		top_move = make_pair(NO_ID, choice);
@@ -237,4 +250,29 @@ void Search::exhaustive_search()
 		// Repeat neighborhood search
 		move = best_neighbor();
 	}
+}
+
+/// Writes an output file containing only the best solution and its objective value.
+void Search::save_data()
+{
+	ofstream log_file(FILE_BASE + FINAL_SOLUTION_FILE);
+
+	if (log_file.is_open())
+	{
+		// Format output
+		log_file << fixed << setprecision(15);
+
+		// Write best solution vector
+		for (int i = 0; i < sol_size; i++)
+			log_file << sol_best[i] << '\t';
+		log_file << endl;
+
+		// Write best solution objective
+		log_file << obj_best << endl;
+
+		log_file.close();
+		cout << "Successfully recorded solution." << endl;
+	}
+	else
+		cout << "Failed to write solution." << endl;
 }
