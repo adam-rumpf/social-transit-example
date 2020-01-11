@@ -2,7 +2,7 @@
 
 A script to procedurally generate small-scale example networks for public transit design with social access objectives.
 
-This is part of my research project related to public transit design with social access objectives, which involves a case study of the Chicago bus network and primary care access. The purpose of this program is to generate small-scale synthetic networks for use in testing the solution algorithm, as well as for adjusting the search algorithm's tuning parameters and conducting sensitivity analysis.
+This is part of my research project related to public transit design with social access objectives (see project home page [here](https://github.com/adam-rumpf/social-transit)), which involves a case study of the Chicago bus network and primary care access. The purpose of this program is to generate small-scale synthetic networks for use in testing the solution algorithm, as well as for adjusting the search algorithm's tuning parameters and conducting sensitivity analysis.
 
 I would not expect this program to be of use to anyone outside of my research group, but it is being made available if anyone is interested.
 
